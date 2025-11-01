@@ -2,6 +2,8 @@
 //тут хуйнёшь глобальные стили которые будут на всех страницах  тип такое import '../styles/globals.css
 //ещё тут добавляешь общие компоненты которые есть везде типа навбара и фоотера 
 
+import Head from "next/head";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">

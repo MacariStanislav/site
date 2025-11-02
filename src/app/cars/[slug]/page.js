@@ -38,13 +38,13 @@ export default function CarDetailPage() {
       )}
 
     
-      {car.mediaUrlPhoto && car.mediaUrlPhoto.length > 0 && (
+      {car.mediaUrlPhoto &&  (
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           {car.mediaUrlPhoto.map((photo, index) => (
             <img
               key={index}
               src={photo}
-              alt={`${car.name} ${index + 1}`}
+              
               width="200"
               style={{ borderRadius: '6px', objectFit: 'cover' }}
             />

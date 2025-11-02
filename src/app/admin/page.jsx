@@ -13,17 +13,16 @@ export default function AdminPage() {
   const [message, setMessage] = useState('');
   const [password, setPassword] = useState('');
 
-  const adminPassword = '1234';
+  const adminPassword = '1234';//это ток для тестов в прод дамин панель уберу в другой сайт с деплоим на гитхаб статично
 
- 
-  const fetchCars = async () => {
+  async function fetchCars() {
     try {
       const res = await api.get('/cars');
       setCars(res.data);
     } catch (err) {
-    
+
     }
-  };
+  }
 
   useEffect(() => {
     fetchCars();
@@ -43,9 +42,8 @@ export default function AdminPage() {
       formData.append('name', name);
       formData.append('description', description);
       formData.append('price', price);
-
-      if (video) formData.append('mediaUrlVideo', video);
       photos.forEach((photo) => formData.append('mediaUrlPhoto', photo));
+      if (video) formData.append('mediaUrlVideo', video);
 
       await api.post('/cars', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
@@ -59,19 +57,18 @@ export default function AdminPage() {
       setPhotos([]);
       fetchCars();
     } catch (err) {
-    
       setMessage('Failed to add car');
     }
   };
 
- 
+
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this car?')) return;
     try {
       await api.delete('/cars', { data: { id } });
       fetchCars();
     } catch (err) {
-     
+
       setMessage('Failed to delete car');
     }
   };

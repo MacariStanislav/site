@@ -8,7 +8,7 @@ export default function CarsPage() {
     <>
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
       <h1>All Cars</h1>
-      <CarsList />
+      <CarsList limit={1}/>
     </div>
        <Link href={'/'}>
         <button >home</button>

@@ -5,22 +5,36 @@ import api from '../../utils/api';
 
 export default function AdminPage() {
   const [cars, setCars] = useState([]);
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [video, setVideo] = useState(null);
-  const [photos, setPhotos] = useState([]);
   const [message, setMessage] = useState('');
   const [password, setPassword] = useState('');
+  const [photos, setPhotos] = useState([]);
+  const [video, setVideo] = useState(null);
 
-  const adminPassword = '1234';//это ток для тестов в прод дамин панель уберу в другой сайт с деплоим на гитхаб статично
+  const adminPassword = '1234'; // тестовый пароль
+
+  const [formData, setFormData] = useState({
+    price: 0,
+    name: '',
+    brand: '',
+    model: '',
+    yearOfManufacture: 0,
+    bodyType: '',
+    mileage: 0,
+    engineDisplacement: 0,
+    power: 0,
+    news: '',
+    fuelType: '',
+    gearbox: '',
+    drive: '',
+    color: '',
+  });
 
   async function fetchCars() {
     try {
       const res = await api.get('/cars');
       setCars(res.data);
     } catch (err) {
-
+   
     }
   }
 
@@ -28,51 +42,111 @@ export default function AdminPage() {
     fetchCars();
   }, []);
 
-  
+
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'number' ? parseInt(value) || 0 : value,
+    }));
+  };
+
+
+  const handleJsonUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const data = JSON.parse(event.target.result);
+
+        setFormData((prev) => ({
+          ...prev,
+          ...Object.keys(prev).reduce((acc, key) => {
+            if (data[key] !== undefined) {
+              acc[key] = data[key];
+            }
+            return acc;
+          }, {}),
+        }));
+
+        setMessage('JSON успешно загружен и поля заполнены!');
+      } catch (err) {
+        
+        setMessage('неверный формат JSON файла.');
+      }
+    };
+    reader.readAsText(file);
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== adminPassword) {
-      setMessage('Incorrect password');
+      setMessage('Неверный пароль');
       return;
     }
 
     try {
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('description', description);
-      formData.append('price', price);
-      photos.forEach((photo) => formData.append('mediaUrlPhoto', photo));
-      if (video) formData.append('mediaUrlVideo', video);
+      const data = new FormData();
 
-      await api.post('/cars', formData, {
+     
+      Object.entries(formData).forEach(([key, value]) => {
+        data.append(key, value);
+      });
+
+      photos.forEach((photo) => data.append('mediaUrlPhoto', photo));
+      if (video) data.append('mediaUrlVideo', video);
+
+  
+      const res = await api.post('/cars', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      setMessage('Car added successfully!');
-      setName('');
-      setDescription('');
-      setPrice('');
-      setVideo(null);
+      setCars((prev) => [...prev, res.data]);
+      setMessage('Машина добавлена!');
+
+     
+      setFormData({
+      price: 0,
+    name: '',
+    brand: '',
+    model: '',
+    yearOfManufacture: 0,
+    bodyType: '',
+    mileage: 0,
+    engineDisplacement: 0,
+    power: 0,
+    news: '',
+    fuelType: '',
+    gearbox: '',
+    drive: '',
+    color: '',
+      });
       setPhotos([]);
-      fetchCars();
+      setVideo(null);
+      setPassword('');
     } catch (err) {
-      setMessage('Failed to add car');
+    
+      setMessage('Ошибка при добавлении машины');
     }
   };
 
 
   const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this car?')) return;
+    if (!confirm('Удалить эту машину?')) return;
     try {
       await api.delete('/cars', { data: { id } });
       fetchCars();
     } catch (err) {
-
-      setMessage('Failed to delete car');
+     
+      setMessage('Ошибка при удалении машины');
     }
   };
 
+  
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
       <h1>Admin Panel - Add Car</h1>
@@ -82,32 +156,31 @@ export default function AdminPage() {
         style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '400px' }}
       >
         <input
-          type="text"
+          type="password"
           placeholder="Admin Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+
+    
+        <label>Upload JSON File (auto-fill form)</label>
         <input
-          type="text"
-          placeholder="Car Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
+          type="file"
+          accept=".json"
+          onChange={handleJsonUpload}
         />
-        <textarea
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
+ 
+        {Object.keys(formData).map((key) => (
+          <input
+            key={key}
+            type={['price','mileage','engineDisplacement','power','yearOfManufacture'].includes(key) ? 'number' : 'text'}
+            name={key}
+            placeholder={key}
+            value={formData[key]}
+            onChange={handleChange}
+          />
+        ))}
 
         <label>Upload Video (one only)</label>
         <input
@@ -145,7 +218,7 @@ export default function AdminPage() {
           </div>
         )}
 
-        <button type="submit">Add Car</button>
+        <button type="submit"> Add Car</button>
       </form>
 
       {message && <p style={{ marginTop: '10px', color: 'green' }}>{message}</p>}

@@ -31,19 +31,20 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
-        {cars.length > 0 ? (
-          cars.map(car => <CarCard key={car._id} car={car} />)
-        ) : (
-          <p>No cars found</p>
-        )}
-      </div>
       <Link href={'/admin'}>
         <button >admin</button>
       </Link>
       <Link href={'/cars'}>
         <button >filter</button>
       </Link>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' ,marginLeft:'200px'}}>
+        {cars.length > 0 ? (
+          cars.map(car => <CarCard key={car._id} car={car} />)
+        ) : (
+          <p>No cars found</p>
+        )}
+      </div>
+    
     </>
   );
 }

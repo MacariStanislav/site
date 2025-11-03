@@ -1,18 +1,54 @@
 import api from './api';
 
-export const addCar = async ({ name, description, price, video, photos }) => {
+export const addCar = async ({
+  name,
+  brand,
+  model,
+  yearOfManufacture,
+  bodyType,
+  mileage,
+  engineDisplacement,
+  power,
+  news,
+  fuelType,
+  gearbox,
+  drive,
+  color,
+  price,
+  photos ,
+  video = null,
+}) => {
   try {
+    if (!photos.length) {
+      throw new Error('Необходимо добавить хотя бы одно фото.');
+    }
+
     const formData = new FormData();
+
+    
     formData.append('name', name);
-    formData.append('description', description);
+    formData.append('brand', brand);
+    formData.append('model', model);
+    formData.append('yearOfManufacture', yearOfManufacture);
+    formData.append('bodyType', bodyType);
+    formData.append('mileage', mileage);
+    formData.append('engineDisplacement', engineDisplacement);
+    formData.append('power', power);
+    formData.append('news', news);
+    formData.append('fuelType', fuelType);
+    formData.append('gearbox', gearbox);
+    formData.append('drive', drive);
+    formData.append('color', color);
     formData.append('price', price);
-    photos.forEach(photo => formData.append('mediaUrlPhoto', photo));//фото обязательно добавлять минимум одну это уже я на админ панели сделаю
+
+  
+ 
+    photos.forEach((photo) => formData.append('mediaUrlPhoto', photo));
+
+ 
     if (video) formData.append('mediaUrlVideo', video);
 
-
-
-
-
+  
     const response = await api.post('/cars', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });

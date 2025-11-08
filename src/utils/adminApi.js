@@ -16,7 +16,7 @@ export const addCar = async ({
   color,
   price,
   photos ,
-  video = null,
+  video = "",
 }) => {
   try {
     if (!photos.length) {
@@ -40,15 +40,14 @@ export const addCar = async ({
     formData.append('drive', drive);
     formData.append('color', color);
     formData.append('price', price);
+    formData.append('mediaUrlVideo', video);
+
 
   
  
     photos.forEach((photo) => formData.append('mediaUrlPhoto', photo));
 
  
-    if (video) formData.append('mediaUrlVideo', video);
-
-  
     const response = await api.post('/cars', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });

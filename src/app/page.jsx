@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import CarCard from '../components/CarCard';
-import { fetchCars } from '../utils/carsApi';
+import CarCard from '@/components/ui/CarCard';
+import { fetchCars } from '@/utils/carsApi';
 import Link from 'next/link';
 
 export default function Home() {

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import CarCard from './CarCard';
 import Filter from './Filter';
-import { fetchCars } from '../utils/carsApi';
+import { fetchCars } from '@/utils/carsApi';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function CarsList({ limit = 3 }) {

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { fetchCarBySlug } from '../../../utils/carsApi';
+import { fetchCarBySlug } from '@/utils/carsApi';
 import Link from 'next/link';
 
 

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import CarsList from '@/components/ui/CarList';
+import CarsList from '../../../components/ui/CarList';
 
 export default function CarsPage() {
   return (

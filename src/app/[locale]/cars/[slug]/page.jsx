@@ -2,23 +2,23 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { fetchCarBySlug } from '@/utils/carsApi';
+import { fetchCarBySlug } from '../../../../utils/carsApi';
 import Link from 'next/link';
-
+import { useLocale } from 'next-intl';
 
 export default function CarDetailPage() {
-  const { slug } = useParams();
+  const params = useParams();
+  const slug = params.slug;
+  const locale = useLocale(); // получаем текущую локаль
   const [car, setCar] = useState({});
 
   async function loadCar() {
     try {
-      
       const data = await fetchCarBySlug(slug);
-      console.log(data)
-      setCar(data)
-     
+      console.log('Car data:', data);
+      setCar(data);
     } catch (err) {
-    
+      console.error('Error loading car:', err);
     }
   }
 
@@ -26,7 +26,10 @@ export default function CarDetailPage() {
     if (slug) loadCar();
   }, [slug]);
 
- 
+  // Функция для создания путей с локалью
+  const getLocalizedPath = (path) => {
+    return `/${locale}${path}`;
+  };
 
   return (
     <div
@@ -38,17 +41,14 @@ export default function CarDetailPage() {
         fontFamily: 'Arial, sans-serif',
       }}
     >
-     
       <h1 style={{ fontSize: '28px', marginBottom: '10px' }}>
         {car.brand} {car.model}
       </h1>
 
-  
       <h2 style={{ color: '#4da6ff', fontSize: '22px', marginBottom: '20px' }}>
         ${car.price}
       </h2>
 
-  
       {car.mediaUrlVideo && (
         <video
           controls
@@ -63,7 +63,6 @@ export default function CarDetailPage() {
         </video>
       )}
 
-    
       {car.mediaUrlPhoto && car.mediaUrlPhoto.length > 0 && (
         <div
           style={{
@@ -77,7 +76,7 @@ export default function CarDetailPage() {
             <img
               key={index}
               src={photo}
-              alt={`${car.name} ${index + 1}`}
+              alt={`${car.brand} ${car.model} ${index + 1}`}
               style={{
                 width: '220px',
                 height: '150px',
@@ -90,7 +89,6 @@ export default function CarDetailPage() {
         </div>
       )}
 
-   
       <div
         style={{
           backgroundColor: '#1e1e1e',
@@ -115,8 +113,21 @@ export default function CarDetailPage() {
           <li><strong>Привод:</strong> {car.drive}</li>
           <li><strong>Цвет:</strong> {car.color}</li>
         </ul>
-      <Link href={'/'}><button >на базу</button></Link>
-
+        
+        {/* Используем путь с локалью */}
+        <Link href={getLocalizedPath('/')}>
+          <button style={{
+            marginTop: '20px',
+            padding: '10px 20px',
+            backgroundColor: '#4da6ff',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '6px',
+            cursor: 'pointer'
+          }}>
+            на базу
+          </button>
+        </Link>
       </div>
     </div>
   );

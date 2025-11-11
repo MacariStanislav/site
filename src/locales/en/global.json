@@ -1,3 +1,9 @@
 {
-    "description": "test"
+    "Home": {
+        "description": "home"
+    },
+    "Navbar": {
+    "title": "site"
+  }
+
 }

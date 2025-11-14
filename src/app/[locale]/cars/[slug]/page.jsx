@@ -3,13 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { fetchCarBySlug } from '../../../../utils/carsApi';
-import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export default function CarDetailPage() {
   const params = useParams();
   const slug = params.slug;
-  const locale = useLocale(); // получаем текущую локаль
+
   const [car, setCar] = useState({});
 
   async function loadCar() {
@@ -26,10 +25,7 @@ export default function CarDetailPage() {
     if (slug) loadCar();
   }, [slug]);
 
-  // Функция для создания путей с локалью
-  const getLocalizedPath = (path) => {
-    return `/${locale}${path}`;
-  };
+ 
 
   return (
     <div
@@ -114,8 +110,8 @@ export default function CarDetailPage() {
           <li><strong>Цвет:</strong> {car.color}</li>
         </ul>
         
-        {/* Используем путь с локалью */}
-        <Link href={getLocalizedPath('/')}>
+      
+        <Link href={'/'}>
           <button style={{
             marginTop: '20px',
             padding: '10px 20px',

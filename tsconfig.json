@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+      "baseUrl": ".",
+    "paths": {
+  "@/*": ["./src/*"]
+},
     "target": "ES2017",
     "lib": [
       "dom",
@@ -30,7 +34,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "next.config.mjs"  ],
   "exclude": [
     "node_modules"
   ]

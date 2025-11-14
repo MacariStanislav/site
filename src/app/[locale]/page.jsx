@@ -3,16 +3,13 @@
 import { useEffect, useState } from 'react';
 import CarCard from '../../components/ui/CarCard';
 import { fetchCars } from '../../utils/carsApi';
-import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link'; // ← Обычный Next.js Link
-import { useRouter } from 'next/navigation'; // ← Обычный Next.js useRouter
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing.js';
 
 export default function Home() {
   const [cars, setCars] = useState([]);
   const t = useTranslations('Home');
-  const locale = useLocale();
-  const router = useRouter();
-
+ 
   async function loadCars() {
     try {
       const data = await fetchCars();
@@ -30,18 +27,14 @@ export default function Home() {
     loadCars();
   }, []);
 
-  // Функция для переходов с сохранением локали
-  const navigateWithLocale = (path) => {
-    return `/${locale}${path}`;
-  };
 
   return (
     <>
-      {/* Используем обычный Link с добавлением локали */}
-      <Link href={navigateWithLocale('/admin')}>
+    
+      <Link href={'/admin'}>
         <button>admin</button>
       </Link>
-      <Link href={navigateWithLocale('/cars')}>
+      <Link href={'/cars'}>
         <button>filter</button>
       </Link>
       

@@ -1,9 +1,11 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/routing.js';
+
 
 export default function CarCard({ car }) {
-  console.log(car)
+
+
   return (
     <div
       style={{

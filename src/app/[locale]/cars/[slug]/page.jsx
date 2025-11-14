@@ -2,31 +2,81 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { fetchCarBySlug } from '../../../../utils/carsApi';
+import { fetchCarBySlug } from '@/utils/carsApi';
 import { Link } from '@/i18n/routing';
 
 export default function CarDetailPage() {
   const params = useParams();
   const slug = params.slug;
 
-  const [car, setCar] = useState({});
+  const [car, setCar] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   async function loadCar() {
     try {
       const data = await fetchCarBySlug(slug);
-      console.log('Car data:', data);
-      setCar(data);
+      if (!data) {
+        setError('Машина с таким идентификатором не найдена.');
+        setCar(null);
+      } else {
+        setCar(data);
+        setError('');
+      }
     } catch (err) {
-      console.error('Error loading car:', err);
+      
+      setError('Произошла ошибка при загрузке машины.');
+      setCar(null);
+    } finally {
+      setLoading(false);
     }
   }
 
   useEffect(() => {
-    if (slug) loadCar();
+    if (slug) {
+      setLoading(true);
+      loadCar();
+    }
   }, [slug]);
 
- 
+  if (loading) {
+    return (
+      <div style={{ padding: '40px', color: '#fff' }}>
+        Загрузка...
+      </div>
+    );
+  }
 
+  if (error) {
+    return (
+      <div
+        style={{
+          padding: '40px',
+          color: '#fff',
+          fontFamily: 'Arial, sans-serif',
+        }}
+      >
+        <h2 style={{ color: '#ff4d4f' }}>{error}</h2>
+        <Link href={'/'}>
+          <button
+            style={{
+              marginTop: '20px',
+              padding: '10px 20px',
+              backgroundColor: '#4da6ff',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+            }}
+          >
+            Вернуться на базу
+          </button>
+        </Link>
+      </div>
+    );
+  }
+
+ 
   return (
     <div
       style={{
@@ -109,18 +159,19 @@ export default function CarDetailPage() {
           <li><strong>Привод:</strong> {car.drive}</li>
           <li><strong>Цвет:</strong> {car.color}</li>
         </ul>
-        
-      
+
         <Link href={'/'}>
-          <button style={{
-            marginTop: '20px',
-            padding: '10px 20px',
-            backgroundColor: '#4da6ff',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '6px',
-            cursor: 'pointer'
-          }}>
+          <button
+            style={{
+              marginTop: '20px',
+              padding: '10px 20px',
+              backgroundColor: '#4da6ff',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+            }}
+          >
             на базу
           </button>
         </Link>

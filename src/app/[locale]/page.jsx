@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import CarCard from '../../components/ui/CarCard';
 import { fetchCars } from '../../utils/carsApi';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing.js';
+import { Link } from '@/i18n/routing';
 
 export default function Home() {
   const [cars, setCars] = useState([]);

@@ -1,14 +1,23 @@
 {
-    "Home": {
-        "description": "дом",
-    "auto_catalog":"Каталог Автомобилей"
-
-    },
-      "Navbar": {
+  "Home": {
+    "description": "дом",
+    "auto_catalog": "Каталог Автомобилей"
+  },
+  "Navbar": {
     "home": "Главная",
-    "catalog":"Каталог",
-    "about_us":"О нас"
+    "catalog": "Каталог",
+    "about_us": "О нас"
+  },
+  "Main": {
+    "our_offers": "Наши Предложения",
+    "sell":"Продажа",
+    "bay":"Покупка",
+    "credit":"Кредит",
+    "sell_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "bayl_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "credit_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "brand":"Найди нужный автомобиль по бренду"
+
 
   }
-
 }

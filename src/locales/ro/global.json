@@ -1,6 +1,8 @@
 {
     "Home": {
-        "description": "casa"
+        "description": "casa",
+    "auto_catalog":"Catalogul de automobile"
+
     },
      "Navbar": {
     "home": "Acasa",

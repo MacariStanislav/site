@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import '@/styles/navbar.css';
-
+import Image from 'next/image'
 export default function Navbar({ pathname }) {
   const t = useTranslations('Navbar');
   const router = useRouter();
@@ -17,25 +17,16 @@ export default function Navbar({ pathname }) {
 
   const dropdownRef = useRef(null);
   const isHome = pathname === '/ru' || pathname === '/ro';
+  const currentPath = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-    
-      if (scrollPosition > 180) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(scrollPosition > 180);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
     handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -65,12 +56,15 @@ export default function Navbar({ pathname }) {
     return () => document.removeEventListener('mousedown', outsideClick);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPath]);
+
   const changeLanguage = (lang) => {
     if (lang === locale) {
       setOpen(false);
       return;
     }
-
     setLocale(lang);
     localStorage.setItem('locale', lang);
 
@@ -86,46 +80,35 @@ export default function Navbar({ pathname }) {
   };
 
   const getNavClass = () => {
-    if (!isHome) {
-      return 'nav-red'; 
-    }
+    if (!isHome) return 'nav-red';
     return isScrolled ? 'nav-red' : 'nav-transparent';
   };
 
   return (
     <nav className={getNavClass()}>
-      <img src="AG.svg" alt="" className="logo" />
-
+      <img src="/AG.svg" alt="logo" className="logo" />
       <ul>
         <li><Link href="/">{t('home')}</Link></li>
         <li><Link href="/">{t('catalog')}</Link></li>
         <li><Link href="/">{t('about_us')}</Link></li>
         <li>+ 373 797 055 79</li>
       </ul>
-
       <div
         ref={dropdownRef}
-        className={`wd-event-click dropdown `}
+        className={`wd-event-click dropdown`}
         onClick={() => setOpen(!open)}
       >
         <div className="dropdownBlock">
           <img src={`/flags/${locale}.svg`} alt="" />
           <span>{locale.toUpperCase()}</span>
         </div>
-
         <div className={`wd-dropdown wd-dropdown-menu wd-design-default ${open ? 'wd-opened' : ''}`}>
-          {locales
-            .filter((l) => l !== locale)
-            .map((lang) => (
-              <div
-                key={lang}
-                className="dropdownItem"
-                onClick={() => changeLanguage(lang)}
-              >
-                <img src={`/flags/${lang}.svg`} alt="" />
-                <span>{lang.toUpperCase()}</span>
-              </div>
-            ))}
+          {locales.filter((l) => l !== locale).map((lang) => (
+            <div key={lang} className="dropdownItem" onClick={() => changeLanguage(lang)}>
+              <img src={`/flags/${lang}.svg`} alt="" />
+              <span>{lang.toUpperCase()}</span>
+            </div>
+          ))}
         </div>
       </div>
     </nav>

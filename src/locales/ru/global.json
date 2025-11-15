@@ -1,11 +1,14 @@
 {
     "Home": {
-        "description": "дом"
+        "description": "дом",
+    "auto_catalog":"Каталог Автомобилей"
+
     },
       "Navbar": {
     "home": "Главная",
     "catalog":"Каталог",
     "about_us":"О нас"
+
   }
 
 }

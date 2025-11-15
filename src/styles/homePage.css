@@ -82,13 +82,11 @@
 
 .text-slider{
   z-index: 100;
-  display: flex;
   position: absolute;
-  flex-direction: column;
   margin-left: 12.5rem;
   margin-top: 14rem;
   color: rgb(255, 255, 255);
-  width: 743px; 
+  max-width: 743px; 
 
 }
 .text-slider p{
@@ -96,6 +94,13 @@
   font-weight: 400;
   margin-top: 60px;
 }
-.text-slider Link{
-
+.link{
+  display: inline-block;
+margin: 0;
+padding: 0;
+margin-top: 100px;
+padding: 19px 20px;
+border-radius: 1rem;
+background-color: #D91E36;
+font-weight: 600;
 }

@@ -51,7 +51,7 @@ export default function Home() {
 <h1 >AUTOGARANT <br/> NORD</h1>
         <p>Creating a design for brands and involving people who interact
           with them is one of the main goals of our company</p>
-        <Link href={'/cars'}>Каталог Автомобилей</Link>
+        <Link href={'/cars'} className='link'>{t('auto_catalog')}</Link>
         </div>
         <div className="arrow left" onClick={prev}></div>
         <div className="arrow right" onClick={next}></div>

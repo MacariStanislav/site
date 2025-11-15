@@ -3,9 +3,9 @@
         "description": "дом"
     },
       "Navbar": {
-    "home": "Домой",
+    "home": "Главная",
     "catalog":"Каталог",
-    "about_us":"Про нас"
+    "about_us":"О нас"
   }
 
 }

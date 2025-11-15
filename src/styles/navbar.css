@@ -1,0 +1,99 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 200px;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  color: white;
+  
+ 
+  transition: background-color 0.5s ease;
+}
+
+.nav-transparent {
+  background-color: transparent !important;
+}
+
+.nav-red {
+  background: #660000 !important;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 3.3rem;
+}
+
+ul {
+  display: flex;
+  gap: 1.12rem;
+  margin: 0;
+  padding: 0;
+  padding-left: 34.1%;
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+  margin-left: -8.5rem;
+}
+
+.dropdownBlock {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdownBlock img {
+  width: 2.5rem;
+}
+
+.wd-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 380;
+  margin-top: 1.25rem;
+  min-width: 120px;
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    visibility 0.35s;
+  pointer-events: none;
+}
+
+.wd-opened>.wd-dropdown,
+.wd-dropdown.wd-opened {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.wd-dropdown-menu .dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.wd-dropdown-menu .dropdownItem:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.wd-dropdown-menu .dropdownItem img {
+  width: 2.5rem;
+}

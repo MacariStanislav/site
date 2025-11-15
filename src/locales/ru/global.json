@@ -2,8 +2,10 @@
     "Home": {
         "description": "дом"
     },
-    "Navbar": {
-    "title": "сайт"
+      "Navbar": {
+    "home": "Домой",
+    "catalog":"Каталог",
+    "about_us":"Про нас"
   }
 
 }

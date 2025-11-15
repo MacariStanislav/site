@@ -2,8 +2,9 @@
     "Home": {
         "description": "casa"
     },
-    "Navbar": {
-    "title": "Site-ul meu"
+     "Navbar": {
+    "home": "Acasa",
+    "catalog":"Catalogul",
+    "about_us":"Despre noi"
   }
-
 }

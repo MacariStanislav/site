@@ -3,7 +3,9 @@
         "description": "home"
     },
     "Navbar": {
-    "title": "site"
+    "home": "Home",
+    "catalog":"Catalog",
+    "about_us":"About us"
   }
 
 }

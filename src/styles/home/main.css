@@ -59,6 +59,7 @@ main {
     flex-direction: column;
     align-items: center;
     margin-top: 7.5rem;
+ 
 }
 
 .car_marc h3 {
@@ -70,10 +71,12 @@ main {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 2.5rem;
+    gap:2.5rem;
     list-style: none;
     padding: 0;
     justify-items: center;
+    margin-top: 5.5rem;
+
 }
 
 .linkCars {
@@ -91,7 +94,6 @@ main {
     transition: all 0.3s ease;
     text-decoration: none;
     cursor: pointer;
-    margin-top: 5.5rem;
 }
 
 .imgWrapper {

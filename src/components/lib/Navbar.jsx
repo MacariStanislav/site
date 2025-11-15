@@ -87,6 +87,7 @@ export default function Navbar({ pathname }) {
   return (
     <nav className={getNavClass()}>
       <img src="/AG.svg" alt="logo" className="logo" />
+      
       <ul>
         <li><Link href="/">{t('home')}</Link></li>
         <li><Link href="/">{t('catalog')}</Link></li>

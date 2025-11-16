@@ -1,23 +1,34 @@
 {
-    "Home": {
-        "description": "casa",
-    "auto_catalog":"Catalogul de automobile"
-
-    },
-     "Navbar": {
-    "home": "Acasa",
-    "catalog":"Catalogul",
-    "about_us":"Despre noi"
+  "Home": {
+    "description": "casa",
+    "auto_catalog": "Catalogul de automobile"
   },
-  "Main":{
-    "our_offers":"Ofertele Noastre",
-    "sell":"Vânzare",
-    "bay":"Cumparare",
-    "credit":"Credit",
-    "sell_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
-    "bayl_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
-    "credit_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
-    "brand":"Cauta masina de care ai nevoie"
+  "Navbar": {
+    "home": "Acasa",
+    "catalog": "Catalogul",
+    "about_us": "Despre noi"
+  },
+  "Main": {
+    "our_offers": "Ofertele Noastre",
+    "sell": "Vânzare",
+    "bay": "Cumparare",
+    "credit": "Credit",
+    "sell_text": "Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "bayl_text": "Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "credit_text": "Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "brand": "Cauta masina de care ai nevoie",
+    "social": "Abonați-vă la rețelele noastre sociale",
+    "position": "Unde ne aflam"
+  },
+  "CarCard": {
+    "more_details": "Detalii",
+    "ofers": "Ofertele noastre",
+    "all_ofers": "Toate ofertele noastre >"
+  },
+  "Footer": {
+    "locatin": "Mun. Bălți, str. Aerodromului, 1",
+    "grafic": "Program de lucru:",
+    "all_time": "In fiecare zi",
+    "social": "Rețelele noastre sociale"
   }
-
 }

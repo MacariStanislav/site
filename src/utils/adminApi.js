@@ -15,17 +15,16 @@ export const addCar = async ({
   drive,
   color,
   price,
-  photos ,
-  video = "",
+  photos,
+  video = null,
 }) => {
   try {
-    if (!photos.length) {
+    if (!photos || !photos.length) {
       throw new Error('Необходимо добавить хотя бы одно фото.');
     }
 
     const formData = new FormData();
 
-    
     formData.append('name', name);
     formData.append('brand', brand);
     formData.append('model', model);
@@ -40,31 +39,49 @@ export const addCar = async ({
     formData.append('drive', drive);
     formData.append('color', color);
     formData.append('price', price);
-    formData.append('mediaUrlVideo', video);
 
+    if (video) formData.append('mediaUrlVideo', video);
 
-  
- 
     photos.forEach((photo) => formData.append('mediaUrlPhoto', photo));
 
- 
     const response = await api.post('/cars', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
 
     return response.data;
   } catch (err) {
-
-    return { error: 'Failed to add car' };
+    console.error(err);
+    return { error: err.message || 'Failed to add car' };
   }
 };
 
 export const deleteCar = async (id) => {
   try {
-    const response = await api.delete('/cars', { data: { id } });
+    const response = await api.delete(`/cars/${id}`);
     return response.data;
   } catch (err) {
-
-    return { error: 'Failed to delete car' };
+    console.error(err);
+    return { error: err.message || 'Failed to delete car' };
   }
+};
+
+export const addCarsBulk = async (cars) => {
+  const results = [];
+  for (const car of cars) {
+    const { photos, video, ...rest } = car;
+    const formData = new FormData();
+    Object.entries(rest).forEach(([key, value]) => formData.append(key, value));
+    if (video) formData.append('mediaUrlVideo', video);
+    photos.forEach((photo) => formData.append('mediaUrlPhoto', photo));
+
+    try {
+      const res = await api.post('/cars/bulk', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      results.push(res.data);
+    } catch (err) {
+      results.push({ error: err.message });
+    }
+  }
+  return results;
 };

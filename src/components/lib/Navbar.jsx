@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import '@/styles/navbar.css';
-import Image from 'next/image'
 export default function Navbar({ pathname }) {
   const t = useTranslations('Navbar');
   const router = useRouter();
@@ -86,11 +85,11 @@ export default function Navbar({ pathname }) {
 
   return (
     <nav className={getNavClass()}>
-      <img src="/AG.svg" alt="logo" className="logo" />
+      <Link href="/"><img src="/AG.svg" alt="logo" className="logo" /></Link>
       
       <ul>
         <li><Link href="/">{t('home')}</Link></li>
-        <li><Link href="/">{t('catalog')}</Link></li>
+        <li><Link href="/cars">{t('catalog')}</Link></li>
         <li><Link href="/">{t('about_us')}</Link></li>
         <li>+ 373 797 055 79</li>
       </ul>

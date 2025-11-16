@@ -10,14 +10,25 @@
   },
   "Main": {
     "our_offers": "Наши Предложения",
-    "sell":"Продажа",
-    "bay":"Покупка",
-    "credit":"Кредит",
-    "sell_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
-    "bayl_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
-    "credit_text":"Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
-    "brand":"Найди нужный автомобиль по бренду"
-
-
+    "sell": "Продажа",
+    "bay": "Покупка",
+    "credit": "Кредит",
+    "sell_text": "Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "bayl_text": "Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "credit_text": "Creating a modern design for your company/brand that will be good for you brand and for increasing sales of your company. We will prepare a logo and strategy of design",
+    "brand": "Найди нужный автомобиль по бренду",
+    "social": "Подписывайтесь на наши Соц Сети",
+    "position": "Наше Местоположение"
+  },
+  "CarCard": {
+    "more_details": "Подробнее",
+    "ofers": "Наши Предложения",
+    "all_ofers": "Посмотреть все предложения >"
+  },
+  "Footer": {
+    "locatin": "г.Бельцы ул.Аэродромная,1",
+    "grafic": "График Работы:",
+    "all_time": "Ежедневно",
+    "social": "Наши соц.сети"
   }
 }

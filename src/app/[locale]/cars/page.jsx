@@ -1,7 +1,7 @@
 'use client';
 
 import { Link } from '@/i18n/routing';
-import CarsList from '@/components/ui/CarList';
+import CarsList from '@/components/ui/CarsList';
   
 export default function CarsPage() {
   return (

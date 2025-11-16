@@ -3,10 +3,12 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import '@/styles/home/main.css';
 import brandCar from './cars'
-
+import CarsList from '@/components/ui/CarsList';
+import VideoPlayer from '@/components/ui/VideoPlayer'
+import StoreLocation from '@/components/ui/StoreLocation'
 const Main = () => {
   const t = useTranslations('Main')
-
+  const social = "@autogarant_nord"
   return (
     <main>
       <section className='ofers'>
@@ -27,7 +29,7 @@ const Main = () => {
             </div>
           </li>
           <li>
-            <div className='liner' />
+            <div className='liner' /> 
             <div className='ofers_block'>
               <img src="/icons/credit.svg" alt="" /><span>{t("credit")}</span>
               <p>{t("credit_text")}</p>
@@ -53,6 +55,29 @@ const Main = () => {
           })}
         </ul>
       </section>
+
+
+      <CarsList />
+      <VideoPlayer src="/video.mp4" />
+      <section className='socials'>
+        <h3>{t("social")}</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/people/AutoGarant-Nord/61581020022134/" target="_blank" rel="noopener noreferrer">
+            <img src="/icons/facebox.svg" alt="" /><span>{social}</span>
+          </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/people/AutoGarant-Nord/61581020022134/" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/tiktok.svg" alt="" /><span>{social}</span></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/autogarant_nord/" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/instagram.svg" alt="" /><span>{social}</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+          <StoreLocation/>
     </main>
   )
 }

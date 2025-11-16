@@ -30,7 +30,7 @@ export default function Footer() {
           <a href="https://www.tiktok.com/@autogarantnord" target="_blank" rel="noopener noreferrer">
             <img src="/icons/tiktok.svg" alt="TikTok" />
           </a>
-          <a href="httpshttps://www.instagram.com/autogarant_nord/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/autogarant_nord/" target="_blank" rel="noopener noreferrer">
             <img src="/icons/instagram.svg" alt="Instagram" />
           </a>
         </div>

@@ -67,7 +67,7 @@ const Main = () => {
           </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/people/AutoGarant-Nord/61581020022134/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.tiktok.com/@autogarantnord" target="_blank" rel="noopener noreferrer">
               <img src="/icons/tiktok.svg" alt="" /><span>{social}</span></a>
           </li>
           <li>

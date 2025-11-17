@@ -3,15 +3,13 @@ nav {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 200px;
-  height: 80px;
+  padding: 0 12.5rem;
+  height: 5rem; 
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
   color: white;
-  
- 
   transition: background-color 0.5s ease;
 }
 
@@ -21,13 +19,11 @@ nav {
 
 .nav-red {
   background: #660000 !important;
-
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1); 
 }
 
 .logo {
   width: 3.3rem;
-  
 }
 
 ul {
@@ -41,7 +37,7 @@ ul {
 .dropdown {
   position: relative;
   cursor: pointer;
-  margin-left: -8.5rem;
+  margin-left: -8.5rem; 
 }
 
 .dropdownBlock {
@@ -60,13 +56,13 @@ ul {
   right: 0;
   z-index: 380;
   margin-top: 1.25rem;
-  min-width: 120px;
+  min-width: 7.5rem; 
   background: #ffffff;
   color: #000000;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.1875rem rgba(0, 0, 0, 0.15); 
   visibility: hidden;
   opacity: 0;
-  transform: translateY(15px);
+  transform: translateY(0.9375rem);
   transition:
     opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -74,7 +70,7 @@ ul {
   pointer-events: none;
 }
 
-.wd-opened>.wd-dropdown,
+.wd-opened > .wd-dropdown,
 .wd-dropdown.wd-opened {
   visibility: visible;
   opacity: 1;

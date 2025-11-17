@@ -1,72 +1,68 @@
 footer {
-    display: flex;
-    padding: 50px 200px;
-    height: 33%;
-    background-color: #660000;
-    color: white;
-    font-size: 20px;
+  display: flex;
+  margin: 0;
+  padding: 3.125rem 12.5rem;
+  background-color: #660000;
+  color: white;
+  font-size: 1.25rem;
+  width: 100%;
 }
 
 footer ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    gap: 235px;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 14.6875rem;
 }
 
 footer li {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 footer img {
-    width: 30px;
+  width: 1.875rem;
 }
 
 footer h3 {
-    font-size: 2rem;
-    font-weight: 700;
-
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .contact p {
-    margin-top: 23px;
-    margin-bottom: 20px;
+  margin-top: 1.4375rem;
+  margin-bottom: 1.25rem;
 }
 
 .contact span {
-    margin-top: 13px;
+  margin-top: 0.8125rem;
 }
 
 .grafic {
-    color: #D7D7D7;
-    font-size: 20px;
-    margin-top: 50px;
-    white-space: nowrap;
-
+  color: #d7d7d7;
+  font-size: 1.25rem;
+  margin-top: 3.125rem;
+  white-space: nowrap;
 }
 
 .graf {
-    font-size: 24px;
-
+  font-size: 1.5rem;
 }
 
 .social {
-
-    white-space: nowrap;
-    color: #D7D7D7;
-    font-size: 24px;
-    margin-top: 1.3rem;
-
+  white-space: nowrap;
+  color: #d7d7d7;
+  font-size: 1.5rem;
+  margin-top: 1.3rem;
 }
 
 .social div {
-    display: flex;
-    gap:38px;
-    margin-top: 2rem;
+  display: flex;
+  gap: 2.375rem;
+  margin-top: 2rem;
 }
 
 .social div img {
-    width: 30px;
-    height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
 }

@@ -9,6 +9,15 @@ html, body {
   scrollbar-width: none;
 
   height: 100%;
+   margin: 0;
+  padding: 0;
+}
+
+
+
+
+main {
+  flex: 1;
 }
 
 
@@ -40,6 +49,9 @@ body {
   background-color: #ffffff;      
   color: #000000;
   -webkit-font-smoothing: antialiased;
+   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 

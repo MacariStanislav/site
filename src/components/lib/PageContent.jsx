@@ -1,9 +1,9 @@
 'use client';
 import { usePathname } from 'next/navigation';
-
+import '@/styles/pageContent.css'
 export default function PageContent({ children }) {
   const pathname = usePathname();
   const isHome = pathname === '/ru' || pathname === '/ro';
 
-  return <div style={{ marginTop: isHome ? 0 : '80px' }}>{children}</div>;
+  return <div className={`${isHome ? "": "isHome" }`}>{children}</div>;
 }

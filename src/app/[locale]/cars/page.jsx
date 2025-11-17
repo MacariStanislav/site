@@ -1,18 +1,15 @@
 'use client';
+import '@/styles/cars/pageCar.css'
 
-import { Link } from '@/i18n/routing';
-import CarsList from '@/components/ui/CarsList';
-  
 export default function CarsPage() {
+  const name = "AUTOGARANT_NORD"
   return (
     <>
-    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <h1>All Cars</h1>
-      <CarsList limit={2}/>
-    </div>
-       <Link href={'/'}>
-        <button >home</button>
-      </Link>
+      <div className='baner'>
+        <img src="/banerCar.png" alt="" />
+        <span>{name}</span>
+      </div>
+
     </>
   );
 }

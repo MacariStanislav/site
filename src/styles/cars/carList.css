@@ -13,7 +13,15 @@
 .car_list_wrapper h3 {
   font-size: 2rem;
   margin-bottom: 62px;
+  text-align: center;
+}
 
+.car_list_container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .car_list {
@@ -26,8 +34,8 @@
 
 .nav_btn {
   position: absolute;
-  top: 40%;
-  transform: translateY(-20%);
+  top: 50%;
+  transform: translateY(-50%);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -43,21 +51,19 @@
 }
 
 .nav_btn.left {
-  left: 0;
+  left: -25px;
 }
 
 .nav_btn.right {
-  right: 0;
+  right: -25px;
 }
 
 .nav_btn:hover {
   background-color: rgba(255, 255, 255, 0.6);
-
 }
 
 .nav_btn:active {
   background-color: rgba(0, 0, 0, 0.6);
-
 }
 
 .nav_btn.disabled {
@@ -72,4 +78,142 @@
   text-decoration-color: #D91E36;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
+  font-size: 1.1rem;
+}
+
+.pagination_dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #D91E36;
+}
+
+@media (max-width: 1024px) {
+  .car_list_wrapper {
+    margin-top: 80px;
+    padding: 0 20px;
+  }
+
+  .car_list_wrapper h3 {
+    font-size: 1.75rem;
+    margin-bottom: 40px;
+  }
+
+  .car_list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .nav_btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .nav_btn.left {
+    left: -15px;
+  }
+
+  .nav_btn.right {
+    right: -15px;
+  }
+
+  .all_ofers {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .car_list_wrapper {
+    margin-top: 60px;
+    padding: 0 15px;
+  }
+
+  .car_list_wrapper h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .car_list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .nav_btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav_btn.left {
+    left: -10px;
+  }
+
+  .nav_btn.right {
+    right: -10px;
+  }
+
+  .all_ofers {
+    margin-top: 40px;
+    font-size: 1rem;
+  }
+
+  .pagination_dots {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .car_list_wrapper {
+    margin-top: 40px;
+    padding: 0 10px;
+  }
+
+  .car_list_wrapper h3 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+  }
+
+  .car_list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .nav_btn {
+    display: none;
+  }
+
+  .pagination_dots {
+    display: flex;
+    margin-top: 25px;
+  }
+
+  .all_ofers {
+    margin-top: 30px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .car_list {
+    max-width: 280px;
+  }
+
+  .car_list_wrapper h3 {
+    font-size: 1.2rem;
+  }
 }

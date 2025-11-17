@@ -1,3 +1,24 @@
+.location-title {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  justify-content: center;
+  margin-top: 140px;
+  text-align: center;
+}
+
+.map-container {
+  width: 100%;
+  margin-top: 120px;
+  margin-bottom: 140px;
+}
+
+.map-iframe {
+  width: 100%;
+  height: 733px;
+  border: none;
+}
+
 footer {
   display: flex;
   margin: 0;
@@ -65,4 +86,219 @@ footer h3 {
 .social div img {
   width: 1.875rem;
   height: 1.875rem;
+}
+
+@media (max-width: 1024px) {
+  .location-title {
+    font-size: 1.75rem;
+    margin-top: 100px;
+  }
+  
+  .map-container {
+    margin-top: 80px;
+    margin-bottom: 100px;
+  }
+  
+  .map-iframe {
+    height: 600px;
+  }
+
+  footer {
+    padding: 2.5rem 6rem;
+  }
+
+  footer ul {
+    gap: 8rem;
+  }
+
+  footer h3 {
+    font-size: 1.75rem;
+  }
+
+  .grafic {
+    font-size: 1.1rem;
+    margin-top: 2.5rem;
+  }
+
+  .graf {
+    font-size: 1.3rem;
+  }
+
+  .social {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .location-title {
+    font-size: 1.5rem;
+    margin-top: 80px;
+    padding: 0 20px;
+  }
+  
+  .map-container {
+    margin-top: 60px;
+    margin-bottom: 80px;
+    padding: 0 15px;
+  }
+  
+  .map-iframe {
+    height: 450px;
+  }
+
+  footer {
+    padding: 2rem 3rem;
+  }
+
+  footer ul {
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  footer li {
+    min-width: 200px;
+  }
+
+  footer h3 {
+    font-size: 1.5rem;
+  }
+
+  .grafic {
+    font-size: 1rem;
+    margin-top: 2rem;
+    white-space: normal;
+  }
+
+  .graf {
+    font-size: 1.2rem;
+  }
+
+  .social {
+    font-size: 1.2rem;
+    white-space: normal;
+  }
+
+  .social div {
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-title {
+    font-size: 1.3rem;
+    margin-top: 60px;
+    padding: 0 15px;
+  }
+  
+  .map-container {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    padding: 0 10px;
+  }
+  
+  .map-iframe {
+    height: 350px;
+  }
+
+  footer {
+    padding: 1.5rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  footer ul {
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  footer li {
+    min-width: auto;
+    width: 100%;
+  }
+
+  footer h3 {
+    font-size: 1.3rem;
+  }
+
+  .contact p {
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .contact span {
+    margin-top: 0.5rem;
+  }
+
+  .grafic {
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+  }
+
+  .graf {
+    font-size: 1.1rem;
+  }
+
+  .social {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .social div {
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  footer img {
+    width: 1.5rem;
+  }
+
+  .social div img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .location-title {
+    font-size: 1.2rem;
+    margin-top: 50px;
+  }
+  
+  .map-container {
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+  
+  .map-iframe {
+    height: 300px;
+  }
+
+  footer {
+    padding: 1rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  footer ul {
+    gap: 1.5rem;
+  }
+
+  footer h3 {
+    font-size: 1.2rem;
+  }
+
+  .grafic {
+    font-size: 0.8rem;
+  }
+
+  .graf {
+    font-size: 1rem;
+  }
+
+  .social {
+    font-size: 1rem;
+  }
+
+  .social div {
+    gap: 1rem;
+  }
 }

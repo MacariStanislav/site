@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from "next-intl";
-
+import '@/styles/home/compoments/storeLocation.css'
 export default function StoreLocation() {
   const address = 'Г.Бельцы ул.Аэродромная 1';
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;

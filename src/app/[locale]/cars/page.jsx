@@ -1,14 +1,14 @@
 'use client';
 import '@/styles/cars/pageCar.css'
-
+import CarFilter from '@/components/ui/CarFilter'
 export default function CarsPage() {
   const name = "AUTOGARANT_NORD"
   return (
     <>
-      <div className='baner'>
-        <img src="/banerCar.png" alt="" />
-        <span>{name}</span>
-      </div>
+      <dir>
+        <img src="/banerCar.png" alt="" className='baner' />
+        <span className='baner_text'>{name}</span></dir>
+      <CarFilter />
 
     </>
   );

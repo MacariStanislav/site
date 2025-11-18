@@ -1,23 +1,23 @@
-.baner{
+.baner {
     display: block;
-    position: relative;
+    position: absolute;
     width: 100vw;
-    height: 2%;
     margin: 0;
     padding: 0;
 
 }
 
-.baner img{
-    width: 100%;
-    position: absolute;
 
-
-}
-.baner span{
-color: white;
-z-index: 5;
-position: relative;
-font-size: 6rem;
-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.baner_text {
+    color: white;
+    z-index: 5;
+    position: relative;
+    font-size: 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    padding-top: 2%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

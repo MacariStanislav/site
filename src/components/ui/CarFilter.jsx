@@ -84,7 +84,7 @@ export default function CarFilter() {
             car.price <= appliedPriceRange[1] &&
             (brandFilter ? car.brand === brandFilter : true) &&
             (bodyFilter ? car.bodyType === bodyFilter : true) &&
-            (transmissionFilter ? car.transmission === transmissionFilter : true) &&
+            (transmissionFilter ? car.gearbox === transmissionFilter : true) &&
             (driveFilter ? car.drive === driveFilter : true)
         );
         setFilteredCars(result);

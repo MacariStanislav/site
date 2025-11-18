@@ -38,7 +38,7 @@ export default function CarFilter() {
     }, {});
 
     const transmissionCounts = transmissions.reduce((acc, trans) => {
-        acc[trans] = cars.filter(car => car.transmission === trans).length;
+        acc[trans] = cars.filter(car => car.gearbox === trans).length;
         return acc;
     }, {});
 

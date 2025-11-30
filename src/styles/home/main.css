@@ -1,8 +1,18 @@
-main {
+.main-home-page {
   margin: 0 12.5rem;
 }
 
-.ofers {
+.home-offers-reset * {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.home-offers-reset {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.home-offers-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,13 +20,13 @@ main {
   margin-top: 7.5rem;
 }
 
-.ofers h3 {
+.home-offers-title {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
 }
 
-.ofers ul {
+.home-offers-list {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -26,36 +36,35 @@ main {
   list-style: none;
 }
 
-.ofers li {
+.home-offer-item {
   display: flex;
   flex-direction: column;
 }
 
-.liner {
+.home-offers-liner {
   width: 100%;
   height: 0.0625rem;
   background-color: #ccc;
 }
 
-.ofers_block {
+.home-offer-block {
   display: flex;
   align-items: center;
   margin: 2rem 0;
   gap: 1rem;
 }
 
-.icon-text {
+.home-offer-icon-text {
   display: flex;
   align-items: center;
   min-width: 12rem;
 }
 
-.ofers_block img {
-  width: 3rem;
+.home-offer-icon {
   height: 3rem;
 }
 
-.ofers_block span {
+.home-offer-label {
   font-size: 2rem;
   display: flex;
   padding-top: 1rem;
@@ -63,27 +72,28 @@ main {
   width: 10rem;
 }
 
-.ofers_block p {
+.home-offer-description {
   max-width: 35.6rem;
   margin-left: auto;
   font-size: 1.1rem;
   line-height: 1.5;
 }
 
-.car_marc {
+/* BRANDS SECTION */
+.home-brands-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 7.5rem;
 }
 
-.car_marc h3 {
+.home-brands-title {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
 }
 
-.car_marc ul {
+.home-brands-list {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, auto);
@@ -94,7 +104,7 @@ main {
   margin-top: 5.5rem;
 }
 
-.linkCars {
+.home-brand-link {
   background-color: #fff;
   color: #000;
   border-radius: 0.9375rem;
@@ -111,54 +121,55 @@ main {
   cursor: pointer;
 }
 
-.imgWrapper {
+.home-brand-img-wrapper {
   height: 3.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.linkCars img {
+.home-brand-logo {
   max-height: 100%;
   width: auto;
   transition: transform 0.3s ease;
 }
 
-.linkCars span {
+.home-brand-name {
   margin-top: 0.5rem;
   font-size: 0.9rem;
   text-align: center;
   transition: color 0.3s ease;
 }
 
-.linkCars:hover {
+.home-brand-link:hover {
   transform: translateY(-0.3125rem);
   box-shadow: 0 0.5rem 0.9375rem rgba(0, 0, 0, 0.2);
   border-color: #ff0000;
 }
 
-.linkCars:hover img {
+.home-brand-link:hover .home-brand-logo {
   transform: scale(1.2);
 }
 
-.linkCars:hover span {
+.home-brand-link:hover .home-brand-name {
   color: #ff0000;
 }
 
-.linkCars:active {
+.home-brand-link:active {
   transform: translateY(0);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
-.linkCars:active img {
+.home-brand-link:active .home-brand-logo {
   transform: scale(1.1);
 }
 
-.linkCars:active span {
+.home-brand-link:active .home-brand-name {
   color: #cc0000;
 }
 
-.socials {
+/* SOCIALS SECTION */
+.home-socials-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,13 +177,13 @@ main {
   margin-top: 7.5rem;
 }
 
-.socials h3 {
+.home-socials-title {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
 }
 
-.socials ul {
+.home-socials-list {
   display: flex;
   gap: 1.89375rem;
   align-items: center;
@@ -184,11 +195,11 @@ main {
   justify-content: center;
 }
 
-.socials li {
+.home-social-item {
   margin: 0.5rem;
 }
 
-.socials a {
+.home-social-link {
   margin: 0;
   padding: 0 1.875rem;
   border-radius: 1.25rem;
@@ -204,57 +215,58 @@ main {
   justify-content: center;
 }
 
-.socials a:hover {
+.home-social-link:hover {
   background-color: rgba(136, 3, 3, 0.1);
   transform: translateY(-2px);
 }
 
-.socials img {
+.home-social-icon {
   height: 3.125rem;
   width: 3.125rem;
 }
 
-.socials span {
+.home-social-username {
   font-size: 1.1rem;
   font-weight: 500;
 }
 
+/* RESPONSIVE STYLES */
 @media (max-width: 1024px) {
-  main {
+  .main-home-page {
     margin: 0 3rem;
   }
 
-  .ofers {
+  .home-offers-section {
     margin-top: 5rem;
   }
 
-  .ofers_block {
+  .home-offer-block {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
     margin: 1.5rem 0;
   }
 
-  .icon-text {
+  .home-offer-icon-text {
     min-width: auto;
   }
 
-  .ofers_block p {
+  .home-offer-description {
     margin-left: 0;
     max-width: 100%;
   }
 
-  .car_marc ul {
+  .home-brands-list {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 4rem;
   }
 
-  .socials ul {
+  .home-socials-list {
     gap: 1rem;
   }
 
-  .socials a {
+  .home-social-link {
     min-width: 12rem;
     height: 5rem;
     padding: 0 1.5rem;
@@ -262,210 +274,225 @@ main {
 }
 
 @media (max-width: 768px) {
-  main {
+  .main-home-page {
     margin: 0 1.5rem;
   }
 
-  .ofers {
+  .home-offers-section {
     margin-top: 3rem;
   }
 
-  .ofers h3 {
+  .home-offers-title {
     font-size: 1.75rem;
   }
 
-  .ofers ul {
+  .home-offers-list {
     margin-top: 3rem;
   }
 
-  .ofers_block {
+  .home-offer-block {
     margin: 1rem 0;
-    gap: 1rem;
+    display: flex;
+    gap: 14rem;
   }
 
-  .ofers_block img {
+  .home-offer-icon {
     width: 2.5rem;
     height: 2.5rem;
   }
 
-  .ofers_block span {
+  .home-offer-label {
     font-size: 1.5rem;
     margin-left: 0.5rem;
     width: auto;
   }
 
-  .ofers_block p {
+  .home-offer-description {
     font-size: 1rem;
-    text-align: justify;
   }
 
-  .car_marc {
+  .home-brands-section {
     margin-top: 4rem;
   }
 
-  .car_marc h3 {
+  .home-brands-title {
     font-size: 1.75rem;
   }
 
-  .car_marc ul {
+  .home-brands-list {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
   }
 
-  .linkCars {
+  .home-brand-link {
     width: 6rem;
     height: 6rem;
     padding: 0.6rem;
   }
 
-  .imgWrapper {
+  .home-brand-img-wrapper {
     height: 2.5rem;
   }
 
-  .linkCars span {
+  .home-brand-name {
     font-size: 0.8rem;
   }
 
-  .socials {
+  .home-socials-section {
     margin-top: 4rem;
   }
 
-  .socials h3 {
+  .home-socials-title {
     font-size: 1.75rem;
   }
 
-  .socials ul {
+  .home-socials-list {
     margin-top: 3rem;
     flex-direction: column;
     width: 100%;
   }
 
-  .socials li {
+  .home-social-item {
     width: 100%;
     max-width: 20rem;
   }
 
-  .socials a {
+  .home-social-link {
     width: 100%;
     min-width: auto;
     height: 5rem;
     padding: 0 1.5rem;
   }
 
-  .socials img {
+  .home-social-icon {
     height: 2.5rem;
     width: 2.5rem;
   }
 
-  .socials span {
+  .home-social-username {
     font-size: 1rem;
+  }
+
+  .home-offer-icon-text {
+    width: 260px;
   }
 }
 
 @media (max-width: 480px) {
-  main {
+  .main-home-page {
     margin: 0 1rem;
   }
 
-  .ofers h3,
-  .car_marc h3,
-  .socials h3 {
-    font-size: 1.5rem;
+  .home-offers-title,
+  .home-brands-title,
+  .home-socials-title {
+    font-size: 1rem;
   }
 
-  .ofers_block {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .home-offer-block {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
   }
 
-  .icon-text {
-    justify-content: center;
+  .home-offer-icon-text {
+    margin: 0;
+    padding: 0;
   }
 
-  .ofers_block span {
+  .home-offer-label {
     margin-left: 0.3rem;
     font-size: 1.3rem;
   }
 
-  .ofers_block p {
-    text-align: center;
+  .home-offer-description {
+    font-size: 0.8rem;
   }
 
-  .car_marc ul {
+  .home-brands-list {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .linkCars {
+  .home-brand-link {
     width: 5.5rem;
     height: 5.5rem;
   }
 
-  .linkCars span {
+  .home-brand-name {
     font-size: 0.75rem;
   }
 
-  .socials a {
+  .home-social-link {
     height: 4.5rem;
     padding: 0 1rem;
   }
 
-  .socials img {
+  .home-social-icon {
     height: 2rem;
     width: 2rem;
   }
 
-  .socials span {
+  .home-social-username {
     font-size: 0.9rem;
   }
 }
 
 @media (max-width: 768px) and (orientation: landscape) {
-  .ofers_block {
+  .home-offer-block {
     flex-direction: row;
     align-items: flex-start;
   }
 
-  .car_marc ul {
+  .home-brands-list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .linkCars,
-  .socials a {
+  .home-brand-link,
+  .home-social-link {
     transition: none;
   }
-  
-  .linkCars:hover,
-  .linkCars:active {
+
+  .home-brand-link:hover,
+  .home-brand-link:active {
     transform: none;
   }
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .linkCars:hover {
+  .home-brand-link:hover {
     transform: none;
     box-shadow: none;
     border-color: #000000;
   }
-  
-  .linkCars:hover img {
+
+  .home-brand-link:hover .home-brand-logo {
     transform: none;
   }
-  
-  .linkCars:hover span {
+
+  .home-brand-link:hover .home-brand-name {
     color: #000;
   }
-  
-  .linkCars:active {
+
+  .home-brand-link:active {
     transform: scale(0.95);
     border-color: #ff0000;
   }
-  
-  .linkCars:active span {
+
+  .home-brand-link:active .home-brand-name {
     color: #ff0000;
   }
+}
+@media (max-width: 330px) {
+  .home-offer-block{
+    display: flex;
+    flex-direction: column;
+  }
+      .home-offer-description{
+        margin-top: -50px;
+      }
+
 }

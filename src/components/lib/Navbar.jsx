@@ -53,15 +53,23 @@ export default function Navbar({ pathname }) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setOpen(false);
       }
-      if (mobileMenuRef.current && 
-          !mobileMenuRef.current.contains(e.target) && 
-          !e.target.closest('.burger-menu')) {
+      if (mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(e.target) &&
+        !e.target.closest('.burger-menu')) {
         setIsMobileMenuOpen(false);
       }
     }
     document.addEventListener('mousedown', outsideClick);
     return () => document.removeEventListener('mousedown', outsideClick);
   }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+    }
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -99,18 +107,22 @@ export default function Navbar({ pathname }) {
     setIsMobileMenuOpen(false);
   };
 
+  const handleCloseMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       <nav className={getNavClass()}>
         <Link href="/">
           <img src="/AG.svg" alt="logo" className="logo" />
         </Link>
-        
+
         <ul className="desktop-nav">
           <li><Link href="/" onClick={handleNavLinkClick}>{t('home')}</Link></li>
           <li><Link href="/cars" onClick={handleNavLinkClick}>{t('catalog')}</Link></li>
           <li><Link href="/about" onClick={handleNavLinkClick}>{t('about_us')}</Link></li>
-          <li className="phone-number">+ 373 797 055 79</li>
+          <li className="phone-number">079705579</li>
         </ul>
 
         <div
@@ -132,7 +144,7 @@ export default function Navbar({ pathname }) {
           </div>
         </div>
 
-        <button 
+        <button
           className={`burger-menu ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
@@ -143,37 +155,56 @@ export default function Navbar({ pathname }) {
         </button>
       </nav>
 
-      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}></div>
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`} onClick={handleCloseMenu}></div>
 
       <div ref={mobileMenuRef} className={`mobile-nav ${isMobileMenuOpen ? 'active' : ''}`}>
+        <div className="mobile-nav-header">
+          <button className="close-menu-btn" onClick={handleCloseMenu}>
+
+          </button>
+        </div>
+
         <div className="mobile-nav-content">
-          <Link href="/" onClick={handleNavLinkClick} className="mobile-nav-link">
-            {t('home')}
-          </Link>
-          <Link href="/cars" onClick={handleNavLinkClick} className="mobile-nav-link">
-            {t('catalog')}
-          </Link>
-          <Link href="/about" onClick={handleNavLinkClick} className="mobile-nav-link">
-            {t('about_us')}
-          </Link>
-          <div className="mobile-phone">+ 373 797 055 79</div>
-          
-          <div className="mobile-language-selector">
-            <div className="mobile-language-label">Select Language:</div>
-            <div className="mobile-language-buttons">
-              {locales.map((lang) => (
-                <button
-                  key={lang}
-                  className={`mobile-language-btn ${locale === lang ? 'active' : ''}`}
-                  onClick={() => {
-                    changeLanguage(lang);
-                    handleNavLinkClick();
-                  }}
-                >
-                  <img src={`/flags/${lang}.svg`} alt={lang} />
-                  <span>{lang.toUpperCase()}</span>
-                </button>
-              ))}
+          <div className="nav-section">
+            <Link href="/" onClick={handleNavLinkClick} className="mobile-nav-link">
+              {t('home')}
+            </Link>
+            <div className="nav-divider"></div>
+
+            <Link href="/cars" onClick={handleNavLinkClick} className="mobile-nav-link">
+              {t('catalog')}
+            </Link>
+            <div className="nav-divider"></div>
+
+            <Link href="/about" onClick={handleNavLinkClick} className="mobile-nav-link">
+              {t('about_us')}
+            </Link>
+            <div className="nav-divider"></div>
+          </div>
+
+          <div className="nav-section">
+            <div className="mobile-phone">079705579</div>
+            <div className="nav-divider"></div>
+          </div>
+
+          <div className="nav-section">
+            <div className="mobile-language-selector">
+              <div className="mobile-language-label">Select Language:</div>
+              <div className="mobile-language-buttons">
+                {locales.map((lang) => (
+                  <button
+                    key={lang}
+                    className={`mobile-language-btn ${locale === lang ? 'active' : ''}`}
+                    onClick={() => {
+                      changeLanguage(lang);
+                      handleNavLinkClick();
+                    }}
+                  >
+                    <img src={`/flags/${lang}.svg`} alt={lang} />
+                    <span>{lang.toUpperCase()}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

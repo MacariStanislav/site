@@ -12,79 +12,86 @@ const Main = () => {
   const social = "@autogarant_nord"
   
   return (
-    <main>
-      <section className='ofers'>
-        <h3>{t("our_offers")}</h3>
-        <ul>
-          <li>
-            <div className='liner' />
-            <div className='ofers_block'>
-              <div className="icon-text">
-                <img src="/icons/sell.svg" alt={t("sell")} />
-                <span>{t("sell")}</span>
+    <main className="main-home-page">
+     <section className='home-offers-section home-offers-reset'>
+        <h3 className='home-offers-title'>{t("our_offers")}</h3>
+        <ul className='home-offers-list'>
+          <li className='home-offer-item'>
+            <div className='home-offers-liner' />
+            <div className='home-offer-block'>
+              <div className="home-offer-icon-text">
+                <img src="/icons/sell.svg" alt={t("sell")} className="home-offer-icon" />
+                <span className="home-offer-label">{t("sell")}</span>
               </div>
-              <p>{t("sell_text")}</p>
+              <p className="home-offer-description">{t("sell_text")}</p>
             </div>
           </li>
-          <li>
-            <div className='liner' />
-            <div className='ofers_block'>
-              <div className="icon-text">
-                <img src="/icons/bay.svg" alt={t("bay")} />
-                <span>{t("bay")}</span>
+          <li className='home-offer-item'>
+            <div className='home-offers-liner' />
+            <div className='home-offer-block'>
+              <div className="home-offer-icon-text">
+                <img src="/icons/bay.svg" alt={t("bay")} className="home-offer-icon" />
+                <span className="home-offer-label">{t("bay")}</span>
               </div>
-              <p>{t("bayl_text")}</p>
+              <p className="home-offer-description">{t("bayl_text")}</p>
             </div>
           </li>
-          <li>
-            <div className='liner' /> 
-            <div className='ofers_block'>
-              <div className="icon-text">
-                <img src="/icons/credit.svg" alt={t("credit")} />
-                <span>{t("credit")}</span>
+          <li className='home-offer-item'>
+            <div className='home-offers-liner' />
+            <div className='home-offer-block'>
+              <div className="home-offer-icon-text">
+                <img src="/icons/credit.svg" alt={t("credit")} className="home-offer-icon" />
+                <span className="home-offer-label">{t("credit")}</span>
               </div>
-              <p>{t("credit_text")}</p>
+              <p className="home-offer-description">{t("credit_text")}</p>
             </div>
           </li>
         </ul>
       </section>
 
-      <section className='car_marc'>
-        <h3>{t('brand')}</h3>
-        <ul>
+      <section className='home-brands-section'>
+        <h3 className='home-brands-title'>{t('brand')}</h3>
+        <ul className='home-brands-list'>
           {Object.entries(brandCar).map(([key, src]) => (
-            <Link href={'/cars'} key={key} className='linkCars'>
-              <div className='imgWrapper'>
-                <img src={src} alt={key} />
+           <Link 
+              href={{
+                pathname: '/cars',
+                query: { brand: key }
+              }} 
+              key={key} 
+              className='home-brand-link'
+            >
+              <div className='home-brand-img-wrapper'>
+                <img src={src} alt={key} className='home-brand-logo' />
               </div>
-              <span>{key}</span>
+              <span className='home-brand-name'>{key}</span>
             </Link>
           ))}
         </ul>
       </section>
 
       <CarsList />
-      <VideoPlayer src="/video.mp4" />
+      <VideoPlayer src="/video.MOV" />
       
-      <section className='socials'>
-        <h3>{t("social")}</h3>
-        <ul>
-          <li>
-            <a href="https://www.facebook.com/people/AutoGarant-Nord/61581020022134/" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/facebox.svg" alt="Facebook" />
-              <span>{social}</span>
+      <section className='home-socials-section'>
+        <h3 className='home-socials-title'>{t("social")}</h3>
+        <ul className='home-socials-list'>
+          <li className='home-social-item'>
+            <a href="https://www.facebook.com/people/AutoGarant-Nord/61581020022134/" target="_blank" rel="noopener noreferrer" className='home-social-link'>
+              <img src="/icons/facebox.svg" alt="Facebook" className='home-social-icon' />
+              <span className='home-social-username'>{social}</span>
             </a>
           </li>
-          <li>
-            <a href="https://www.tiktok.com/@autogarantnord" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/tiktok.svg" alt="TikTok" />
-              <span>{social}</span>
+          <li className='home-social-item'>
+            <a href="https://www.tiktok.com/@autogarantnord" target="_blank" rel="noopener noreferrer" className='home-social-link'>
+              <img src="/icons/tiktok.svg" alt="TikTok" className='home-social-icon' />
+              <span className='home-social-username'>{social}</span>
             </a>
           </li>
-          <li>
-            <a href="https://www.instagram.com/autogarant_nord/" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/instagram.svg" alt="Instagram" />
-              <span>{social}</span>
+          <li className='home-social-item'>
+            <a href="https://www.instagram.com/autogarant_nord/" target="_blank" rel="noopener noreferrer" className='home-social-link'>
+              <img src="/icons/instagram.svg" alt="Instagram" className='home-social-icon' />
+              <span className='home-social-username'>{social}</span>
             </a>
           </li>
         </ul>

@@ -1,22 +1,16 @@
 import api from './api';
 
 export const addCar = async ({
-  name,
   brand,
   model,
   yearOfManufacture,
-  bodyType,
-  mileage,
   engineDisplacement,
-  power,
-  news,
   fuelType,
   gearbox,
-  drive,
-  color,
+  mileage,
   price,
+  mediaUrlVideo,
   photos,
-  video = null,
 }) => {
   try {
     if (!photos || !photos.length) {
@@ -25,22 +19,18 @@ export const addCar = async ({
 
     const formData = new FormData();
 
-    formData.append('name', name);
     formData.append('brand', brand);
     formData.append('model', model);
     formData.append('yearOfManufacture', yearOfManufacture);
-    formData.append('bodyType', bodyType);
-    formData.append('mileage', mileage);
     formData.append('engineDisplacement', engineDisplacement);
-    formData.append('power', power);
-    formData.append('news', news);
     formData.append('fuelType', fuelType);
     formData.append('gearbox', gearbox);
-    formData.append('drive', drive);
-    formData.append('color', color);
+    formData.append('mileage', mileage);
     formData.append('price', price);
-
-    if (video) formData.append('mediaUrlVideo', video);
+    
+    if (mediaUrlVideo) {
+      formData.append('mediaUrlVideo', mediaUrlVideo);
+    }
 
     photos.forEach((photo) => formData.append('mediaUrlPhoto', photo));
 
@@ -57,7 +47,7 @@ export const addCar = async ({
 
 export const deleteCar = async (id) => {
   try {
-    const response = await api.delete(`/cars/${id}`);
+    const response = await api.delete('/cars', { data: { id } });
     return response.data;
   } catch (err) {
     console.error(err);
@@ -68,10 +58,10 @@ export const deleteCar = async (id) => {
 export const addCarsBulk = async (cars) => {
   const results = [];
   for (const car of cars) {
-    const { photos, video, ...rest } = car;
+    const { photos, ...rest } = car;
     const formData = new FormData();
     Object.entries(rest).forEach(([key, value]) => formData.append(key, value));
-    if (video) formData.append('mediaUrlVideo', video);
+    
     photos.forEach((photo) => formData.append('mediaUrlPhoto', photo));
 
     try {

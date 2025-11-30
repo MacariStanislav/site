@@ -7,7 +7,7 @@ export default function CarCard({ car }) {
   const t = useTranslations('CarCard')
   return (
     <div className="carCard">
-      <div className="carCard_imgBox">
+      <div className="carCard_imgBox" >
         <img src={car.mediaUrlPhoto[0]} alt={`${car.brand} ${car.model}`} />
       </div>
 
@@ -15,7 +15,7 @@ export default function CarCard({ car }) {
         {car.brand} {car.model}
       </h2>
 
-      <h3 className="carCard_price">
+      <h3 className="carCard_price" style={{display:'flex',fontSize:'1.2rem',color:'#333333',marginBottom:'25px'}}>
         {car.price}€
       </h3>
 

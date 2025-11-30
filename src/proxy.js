@@ -31,7 +31,7 @@ export function proxy(req) {
 function isValidRoute(route) {
  
   
-  const validRoutes = ['admin', 'cars']; 
+  const validRoutes = ['admin', 'cars','about']; 
   return validRoutes.includes(route.split('/')[0])
 }
 

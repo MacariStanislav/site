@@ -1,4 +1,5 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 
 const withNextIntl = createNextIntlPlugin();
 
@@ -107,7 +108,7 @@ const nextConfig = {
     // Только для клиентской production сборки
     if (!isServer && !dev) {
       // Минификация с обфускацией
-      const TerserPlugin = require('terser-webpack-plugin');
+ 
       
       if (!config.optimization.minimizer) {
         config.optimization.minimizer = [];
@@ -141,11 +142,7 @@ const nextConfig = {
     return config;
   },
   
-  // Игнорировать ошибки сборки
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  
+ 
   typescript: {
     ignoreBuildErrors: true,
   },

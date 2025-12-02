@@ -10,9 +10,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-// ==========================
-// SEO + PWA metadata
-// ==========================
+
 export const metadata = {
   title: {
     default: "AUTOGARANT_NORD",
@@ -38,7 +36,7 @@ export const metadata = {
   openGraph: {
     title: "AUTOGARANT_NORD",
     description:
-      "Лучшие автомобили, аренда и подбор — AUTOGARANT_NORD.",
+      "Лучшие автомобили, аренда и подбор — AUTOG ARANT_NORD.",
     url: "https://your-domain.com",
     siteName: "AUTOGARANT_NORD",
     images: [
@@ -52,24 +50,21 @@ export const metadata = {
     type: "website"
   },
   manifest: "/manifest.json",
-  themeColor: "#000000",
+   metadataBase: new URL("https://your-domain.com"),
 };
 
 export default async function RootLayout({ children, params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
       <head>
-        {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
 
-        {/* Улучшение скорости */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-        {/* Structured data (Google) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

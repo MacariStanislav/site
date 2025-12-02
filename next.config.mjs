@@ -78,17 +78,22 @@ const nextConfig = {
     return headers;
   },
   
-  // Rewrites для маскировки API
+  // Rewrites для маскировки API (с проверкой)
   async rewrites() {
+    const backendUrl = process.env.BACKEND_API_URL;
+    
+    // Если URL не указан, не добавляем rewrites
+    if (!backendUrl || backendUrl === 'undefined') {
+      return {};
+    }
+    
     return {
       beforeFiles: [
         {
           source: '/api/proxy/:path*',
-          destination: `${process.env.BACKEND_API_URL}/:path*`
+          destination: `${backendUrl}/:path*`
         }
       ],
-      afterFiles: [],
-      fallback: [],
     };
   },
   
@@ -102,36 +107,36 @@ const nextConfig = {
     ],
   },
   
-  // Webpack конфигурация для обфускации
+  // Webpack конфигурация для обфускации (исправленная для ES модулей)
   webpack: (config, { isServer, dev }) => {
     // Только для клиентской production сборки
     if (!isServer && !dev) {
-      // Минификация с обфускацией
-      const TerserPlugin = require('terser-webpack-plugin');
-      
-      if (!config.optimization.minimizer) {
-        config.optimization.minimizer = [];
-      }
-      
-      config.optimization.minimizer.push(
-        new TerserPlugin({
-          terserOptions: {
-            compress: {
-              drop_console: true, // Убираем console.log в production
-              drop_debugger: true,
-              pure_funcs: ['console.log', 'console.info', 'console.debug']
-            },
-            mangle: {
-              properties: {
-                regex: /^_/ // Манглям приватные свойства
+      // Динамически импортируем TerserPlugin
+      import('terser-webpack-plugin').then(({ default: TerserPlugin }) => {
+        if (!config.optimization.minimizer) {
+          config.optimization.minimizer = [];
+        }
+        
+        config.optimization.minimizer.push(
+          new TerserPlugin({
+            terserOptions: {
+              compress: {
+                drop_console: true,
+                drop_debugger: true,
+                pure_funcs: ['console.log', 'console.info', 'console.debug']
+              },
+              mangle: {
+                properties: {
+                  regex: /^_/
+                }
+              },
+              output: {
+                comments: false
               }
-            },
-            output: {
-              comments: false // Убираем комментарии
             }
-          }
-        })
-      );
+          })
+        );
+      });
       
       // Обфускация имен модулей
       config.optimization.moduleIds = 'deterministic';
@@ -139,15 +144,6 @@ const nextConfig = {
     }
     
     return config;
-  },
-  
-  // Игнорировать ошибки сборки
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  
-  typescript: {
-    ignoreBuildErrors: true,
   },
 };
 

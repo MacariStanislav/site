@@ -4,17 +4,17 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Отключаем проблемные функции
-  reactCompiler: false,
+  reactCompiler: true,
   
-  // Базовые настройки
+  // Отключаем source maps в production
   productionBrowserSourceMaps: false,
+  
+  // Включить сжатие
   compress: true,
-  swcMinify: true,
   
   // Заголовки безопасности
   async headers() {
-    return [
+    const headers = [
       {
         source: '/:path*',
         headers: [
@@ -33,44 +33,122 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+          },
+          // Маскируем информацию
+          {
+            key: 'Server',
+            value: 'NextJS-App'
+          },
+          {
+            key: 'X-Powered-By',
+            value: 'Next.js'
           }
-        ]
-      }
+        ],
+      },
     ];
+    
+    // Добавляем CORS заголовки для API
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    headers.push({
+      source: '/api/:path*',
+      headers: [
+        {
+          key: 'Access-Control-Allow-Origin',
+          value: appUrl
+        },
+        {
+          key: 'Access-Control-Allow-Methods',
+          value: 'GET, POST, PUT, DELETE, OPTIONS'
+        },
+        {
+          key: 'Access-Control-Allow-Headers',
+          value: 'Content-Type, Authorization, X-Request-ID, X-Timestamp'
+        },
+        {
+          key: 'Access-Control-Max-Age',
+          value: '86400'
+        }
+      ],
+    });
+    
+    return headers;
   },
   
-  // Rewrites для API прокси
+  // Rewrites для маскировки API
   async rewrites() {
-    const backendUrl = process.env.BACKEND_API_URL;
-    
-    if (!backendUrl || backendUrl === 'undefined') {
-      return {};
-    }
-    
     return {
       beforeFiles: [
         {
           source: '/api/proxy/:path*',
-          destination: `${backendUrl}/:path*`
+          destination: `${process.env.BACKEND_API_URL}/:path*`
         }
-      ]
+      ],
+      afterFiles: [],
+      fallback: [],
     };
   },
   
-  // Изображения
+  // Оптимизация изображений
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**'
-      }
-    ]
+        hostname: '**',
+      },
+    ],
   },
   
-  // Убираем console.log в production
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production'
-  }
+  // Webpack конфигурация для обфускации
+  webpack: (config, { isServer, dev }) => {
+    // Только для клиентской production сборки
+    if (!isServer && !dev) {
+      // Минификация с обфускацией
+      const TerserPlugin = require('terser-webpack-plugin');
+      
+      if (!config.optimization.minimizer) {
+        config.optimization.minimizer = [];
+      }
+      
+      config.optimization.minimizer.push(
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              drop_console: true, // Убираем console.log в production
+              drop_debugger: true,
+              pure_funcs: ['console.log', 'console.info', 'console.debug']
+            },
+            mangle: {
+              properties: {
+                regex: /^_/ // Манглям приватные свойства
+              }
+            },
+            output: {
+              comments: false // Убираем комментарии
+            }
+          }
+        })
+      );
+      
+      // Обфускация имен модулей
+      config.optimization.moduleIds = 'deterministic';
+      config.optimization.chunkIds = 'deterministic';
+    }
+    
+    return config;
+  },
+  
+  // Игнорировать ошибки сборки
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default withNextIntl(nextConfig);

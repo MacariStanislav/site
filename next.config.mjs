@@ -84,6 +84,13 @@ const nextConfig = {
     
     // Если URL не указан, не добавляем rewrites
     if (!backendUrl || backendUrl === 'undefined') {
+      console.warn('BACKEND_API_URL не установлен, отключаем rewrites');
+      return {};
+    }
+    
+    // Проверяем что URL валидный
+    if (!backendUrl.startsWith('http://') && !backendUrl.startsWith('https://')) {
+      console.error('BACKEND_API_URL должен начинаться с http:// или https://');
       return {};
     }
     
@@ -107,40 +114,35 @@ const nextConfig = {
     ],
   },
   
-  // Webpack конфигурация для обфускации (исправленная для ES модулей)
+  // Базовые webpack настройки (без terser-webpack-plugin)
   webpack: (config, { isServer, dev }) => {
     // Только для клиентской production сборки
     if (!isServer && !dev) {
-      // Динамически импортируем TerserPlugin
-      import('terser-webpack-plugin').then(({ default: TerserPlugin }) => {
-        if (!config.optimization.minimizer) {
-          config.optimization.minimizer = [];
-        }
-        
-        config.optimization.minimizer.push(
-          new TerserPlugin({
-            terserOptions: {
-              compress: {
-                drop_console: true,
-                drop_debugger: true,
-                pure_funcs: ['console.log', 'console.info', 'console.debug']
-              },
-              mangle: {
-                properties: {
-                  regex: /^_/
-                }
-              },
-              output: {
-                comments: false
-              }
-            }
-          })
-        );
-      });
-      
-      // Обфускация имен модулей
+      // Простая оптимизация без внешних плагинов
+      config.optimization.minimize = true;
       config.optimization.moduleIds = 'deterministic';
       config.optimization.chunkIds = 'deterministic';
+      
+      // Базовая конфигурация минификации через встроенный минификатор
+      if (config.optimization.minimizer && Array.isArray(config.optimization.minimizer)) {
+        config.optimization.minimizer.forEach((minimizer) => {
+          if (minimizer.constructor.name === 'TerserPlugin') {
+            // Настройки для встроенного Terser
+            minimizer.options = {
+              ...minimizer.options,
+              terserOptions: {
+                compress: {
+                  drop_console: true,
+                  drop_debugger: true,
+                },
+                output: {
+                  comments: false
+                }
+              }
+            };
+          }
+        });
+      }
     }
     
     return config;

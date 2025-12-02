@@ -15,6 +15,7 @@
   font-size: 28px;
   margin-bottom: 10px;
   font-weight: bold;
+  line-height: 1.2;
 }
 
 .car-price {
@@ -32,6 +33,7 @@
   font-size: 18px;
   margin-bottom: 10px;
   color: #4da6ff;
+  font-weight: 600;
 }
 
 .car-video {
@@ -39,6 +41,16 @@
   max-width: 700px;
   border-radius: 10px;
   margin-bottom: 20px;
+  background: #000;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .car-specs {
@@ -48,6 +60,12 @@
   max-width: 700px;
   margin-bottom: 40px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.car-specs:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
 .specs-grid {
@@ -61,86 +79,154 @@
   flex-direction: column;
   padding: 8px 0;
   border-bottom: 1px solid #333;
+  transition: border-color 0.3s ease;
+}
+
+.spec-item:hover {
+  border-color: #4da6ff;
 }
 
 .spec-label {
   color: #888;
   font-size: 14px;
   margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .spec-value {
   color: #fff;
   font-size: 16px;
+  font-weight: 500;
 }
 
 .related-cars-section {
   margin: 40px 0;
+  padding: 20px 0;
 }
 
 .related-title {
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #4da6ff;
   text-align: center;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 10px;
+}
+
+.related-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #4da6ff, transparent);
+  border-radius: 2px;
 }
 
 .related-cars-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 25px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .related-car-card {
   background-color: #1e1e1e;
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.related-car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(77, 166, 255, 0.3);
+  background-color: #252525;
 }
 
 .related-car-title {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  flex-grow: 1;
 }
 
 .related-car-price {
   color: #4da6ff;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
 }
 
 .related-car-specs {
   color: #888;
   font-size: 14px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   line-height: 1.5;
+  flex-grow: 1;
 }
 
 .view-button {
-  background-color: #4da6ff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  width: 100%;
-}
-
-.back-button {
-  background-color: #4da6ff;
+  background: linear-gradient(135deg, #4da6ff, #1a75ff);
   color: #fff;
   border: none;
   padding: 12px 24px;
-  border-radius: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.view-button:hover {
+  background: linear-gradient(135deg, #1a75ff, #0052cc);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 166, 255, 0.4);
+}
+
+.back-button {
+  background: linear-gradient(135deg, #4da6ff, #1a75ff);
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 600;
   margin-top: 20px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background: linear-gradient(135deg, #1a75ff, #0052cc);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 166, 255, 0.4);
+}
+
+.back-button svg {
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover svg {
+  transform: translateX(-3px);
 }
 
 .loading-container,
@@ -158,7 +244,405 @@
 .error-container h2 {
   color: #ff4d4f;
   margin-bottom: 20px;
+  font-size: 24px;
 }
+
+.error-message {
+  color: #ccc;
+  font-size: 16px;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #ff4d4f, #d9363e);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: linear-gradient(135deg, #d9363e, #b32b33);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 77, 79, 0.4);
+}
+
+/* ===== АДАПТАЦИЯ ДЛЯ ТЕЛЕВИЗОРОВ ===== */
+
+/* 8K телевизоры (7680x4320) */
+@media (min-width: 3841px) {
+  .car-detail-container {
+    padding: 40px;
+    max-width: 2560px;
+    margin: 0 auto;
+  }
+  
+  .car-detail-content {
+    max-width: 1800px;
+  }
+  
+  .car-title {
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
+  
+  .car-price {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  .video-section {
+    margin-bottom: 50px;
+  }
+  
+  .video-label {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  .video-wrapper {
+    max-width: 1000px;
+    border-radius: 16px;
+  }
+  
+  .car-video {
+    max-width: 1000px;
+    border-radius: 16px;
+  }
+  
+  .car-specs {
+    max-width: 1000px;
+    padding: 40px;
+    border-radius: 18px;
+    margin-bottom: 60px;
+  }
+  
+  .specs-grid {
+    gap: 25px;
+  }
+  
+  .spec-item {
+    padding: 15px 0;
+  }
+  
+  .spec-label {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .spec-value {
+    font-size: 22px;
+  }
+  
+  .related-cars-section {
+    margin: 60px 0;
+    padding: 40px 0;
+  }
+  
+  .related-title {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
+  
+  .related-cars-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1800px;
+  }
+  
+  .related-car-card {
+    padding: 35px;
+    border-radius: 18px;
+  }
+  
+  .related-car-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  .related-car-price {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+  
+  .related-car-specs {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+  
+  .view-button {
+    padding: 16px 32px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+  
+  .back-button {
+    padding: 18px 36px;
+    font-size: 20px;
+    margin-top: 30px;
+  }
+  
+  .error-container h2 {
+    font-size: 32px;
+  }
+  
+  .error-message {
+    font-size: 22px;
+    max-width: 800px;
+  }
+  
+  .retry-button {
+    padding: 16px 32px;
+    font-size: 20px;
+  }
+}
+
+/* 4K телевизоры (3840x2160) */
+@media (min-width: 2561px) and (max-width: 3840px) {
+  .car-detail-container {
+    padding: 35px;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+  .car-detail-content {
+    max-width: 1600px;
+  }
+  
+  .car-title {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+  
+  .car-price {
+    font-size: 28px;
+    margin-bottom: 35px;
+  }
+  
+  .video-label {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .video-wrapper {
+    max-width: 900px;
+  }
+  
+  .car-video {
+    max-width: 900px;
+  }
+  
+  .car-specs {
+    max-width: 900px;
+    padding: 35px;
+    border-radius: 16px;
+    margin-bottom: 50px;
+  }
+  
+  .specs-grid {
+    gap: 20px;
+  }
+  
+  .spec-item {
+    padding: 12px 0;
+  }
+  
+  .spec-label {
+    font-size: 16px;
+  }
+  
+  .spec-value {
+    font-size: 20px;
+  }
+  
+  .related-cars-section {
+    margin: 50px 0;
+    padding: 35px 0;
+  }
+  
+  .related-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+  
+  .related-cars-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
+    max-width: 1600px;
+  }
+  
+  .related-car-card {
+    padding: 30px;
+    border-radius: 16px;
+  }
+  
+  .related-car-title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  
+  .related-car-price {
+    font-size: 24px;
+    margin-bottom: 22px;
+  }
+  
+  .related-car-specs {
+    font-size: 16px;
+    margin-bottom: 22px;
+  }
+  
+  .view-button {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+  
+  .back-button {
+    padding: 16px 32px;
+    font-size: 18px;
+    margin-top: 25px;
+  }
+  
+  .error-container h2 {
+    font-size: 28px;
+  }
+  
+  .error-message {
+    font-size: 18px;
+    max-width: 700px;
+  }
+}
+
+/* 2K телевизоры (2560x1440) */
+@media (min-width: 1921px) and (max-width: 2560px) {
+  .car-detail-container {
+    padding: 30px;
+  }
+  
+  .car-detail-content {
+    max-width: 1400px;
+  }
+  
+  .car-title {
+    font-size: 32px;
+  }
+  
+  .car-price {
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+  
+  .video-label {
+    font-size: 20px;
+  }
+  
+  .car-specs {
+    padding: 30px;
+    max-width: 800px;
+  }
+  
+  .spec-label {
+    font-size: 15px;
+  }
+  
+  .spec-value {
+    font-size: 18px;
+  }
+  
+  .related-cars-section {
+    margin: 45px 0;
+    padding: 30px 0;
+  }
+  
+  .related-title {
+    font-size: 26px;
+    margin-bottom: 35px;
+  }
+  
+  .related-cars-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+  }
+  
+  .related-car-card {
+    padding: 28px;
+  }
+  
+  .related-car-title {
+    font-size: 20px;
+  }
+  
+  .related-car-price {
+    font-size: 22px;
+  }
+  
+  .back-button {
+    padding: 15px 30px;
+    font-size: 17px;
+  }
+}
+
+/* Full HD телевизоры (1920x1080) */
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .car-detail-container {
+    padding: 25px;
+  }
+  
+  .car-detail-content {
+    max-width: 1200px;
+  }
+  
+  .car-title {
+    font-size: 30px;
+  }
+  
+  .car-price {
+    font-size: 24px;
+  }
+  
+  .car-specs {
+    padding: 28px;
+  }
+  
+  .related-cars-grid {
+    gap: 25px;
+  }
+  
+  .related-car-card {
+    padding: 25px;
+  }
+}
+
+/* HD телевизоры и большие планшеты */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .car-detail-container {
+    padding: 20px;
+  }
+  
+  .car-detail-content {
+    max-width: 1100px;
+  }
+  
+  .car-title {
+    font-size: 26px;
+  }
+  
+  .car-price {
+    font-size: 22px;
+  }
+  
+  .related-cars-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* ===== СУЩЕСТВУЮЩИЕ МЕДИА-ЗАПРОСЫ ===== */
 
 @media (max-width: 768px) {
   .car-detail-container {
@@ -192,7 +676,6 @@
     padding: 10px;
   }
   
-  
   .car-title {
     font-size: 20px;
   }
@@ -203,5 +686,81 @@
   
   .car-specs {
     padding: 15px;
+  }
+}
+
+/* Дополнительные улучшения для телевизоров */
+@media (min-width: 1441px) {
+  /* Увеличенные области клика для пульта ДУ */
+  .view-button,
+  .back-button,
+  .retry-button {
+    position: relative;
+  }
+  
+  .view-button::after,
+  .back-button::after,
+  .retry-button::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    z-index: -1;
+  }
+  
+  /* Улучшенные hover-эффекты */
+  .related-car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(77, 166, 255, 0.3);
+  }
+  
+  /* Плавные переходы */
+  .car-detail-container * {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Улучшенная читаемость */
+  .car-title,
+  .related-title,
+  .video-label {
+    letter-spacing: 0.5px;
+  }
+}
+
+/* Поддержка высокой плотности пикселей (4K) */
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1441px),
+       (min-resolution: 192dpi) and (min-width: 1441px) {
+  .video-wrapper,
+  .car-specs,
+  .related-car-card {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Уменьшенная анимация для пользователей */
+@media (prefers-reduced-motion: reduce) {
+  .car-detail-container * {
+    transition: none !important;
+  }
+  
+  .related-car-card:hover,
+  .view-button:hover,
+  .back-button:hover,
+  .retry-button:hover,
+  .car-specs:hover {
+    transform: none !important;
+  }
+}
+
+/* Улучшенная доступность для телевизоров */
+@media (min-width: 1441px) {
+  .view-button:focus,
+  .back-button:focus,
+  .retry-button:focus {
+    outline: 3px solid rgba(77, 166, 255, 0.5);
+    outline-offset: 5px;
   }
 }

@@ -1,24 +1,6 @@
-.location-title {
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-  justify-content: center;
-  margin-top: 140px;
-  text-align: center;
+.footerSocial{
+  display: none;
 }
-
-.map-container {
-  width: 100%;
-  margin-top: 120px;
-  margin-bottom: 140px;
-}
-
-.map-iframe {
-  width: 100%;
-  height: 733px;
-  border: none;
-}
-
 footer {
   display: flex;
   margin: 0;
@@ -27,19 +9,24 @@ footer {
   color: white;
   font-size: 1.25rem;
   width: 100%;
+  box-sizing: border-box;
 }
-
+.copyNot{
+  display: flex;
+  color: black;
+  margin-left: -180px;
+}
 footer ul {
   display: flex;
   padding: 0;
   margin: 0;
-  gap: 14.6875rem;
 }
 
 footer li {
   display: flex;
   flex-direction: column;
 }
+
 
 footer img {
   width: 1.875rem;
@@ -63,7 +50,8 @@ footer h3 {
   color: #d7d7d7;
   font-size: 1.25rem;
   margin-top: 3.125rem;
-  white-space: nowrap;
+  margin-left: 6rem;
+
 }
 
 .graf {
@@ -71,10 +59,10 @@ footer h3 {
 }
 
 .social {
-  white-space: nowrap;
   color: #d7d7d7;
   font-size: 1.5rem;
-  margin-top: 1.3rem;
+  margin-top: 2.9rem;
+  margin-left: 14rem;
 }
 
 .social div {
@@ -83,10 +71,234 @@ footer h3 {
   margin-top: 2rem;
 }
 
-.social div img {
-  width: 1.875rem;
-  height: 1.875rem;
+/* ===== АДАПТАЦИЯ ДЛЯ БОЛЬШИХ УСТРОЙСТВ (ТЕЛЕВИЗОРЫ) ===== */
+
+/* Full HD телевизоры (1920x1080) */
+@media (min-width: 1441px) and (max-width: 1920px) {
+  footer {
+    padding: 3.5rem 15rem;
+    font-size: 1.35rem;
+  }
+  
+  footer h3 {
+    font-size: 2.2rem;
+  }
+  
+  .grafic {
+    font-size: 1.35rem;
+    margin-left: 8rem;
+    margin-top: 3.5rem;
+  }
+  
+  .graf {
+    font-size: 1.6rem;
+  }
+  
+  .social {
+    font-size: 1.6rem;
+    margin-left: 16rem;
+    margin-top: 3.5rem;
+  }
+  
+  .social div {
+    gap: 2.5rem;
+    margin-top: 2.2rem;
+  }
+  
+  footer img {
+    width: 2rem;
+  }
+  
+  .copyNot {
+    margin-left: -200px;
+    font-size: 1.1rem;
+  }
 }
+
+/* 2K телевизоры (2560x1440) */
+@media (min-width: 1921px) and (max-width: 2560px) {
+  footer {
+    padding: 4rem 18rem;
+    font-size: 1.5rem;
+    max-width: 2560px;
+    margin: 0 auto;
+  }
+  
+  footer h3 {
+    font-size: 2.5rem;
+  }
+  
+  .grafic {
+    font-size: 1.5rem;
+    margin-left: 40rem;
+    margin-top: 4rem;
+  }
+  
+  .graf {
+    font-size: 1.8rem;
+  }
+  
+  .social {
+    font-size: 1.8rem;
+    margin-left: 28rem;
+    margin-top: 4rem;
+  }
+  
+  .social div {
+    gap: 3rem;
+    margin-top: 2.5rem;
+  }
+  
+  footer img {
+    width: 2.2rem;
+  }
+  
+  .contact p {
+    margin-top: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact span {
+    margin-top: 1rem;
+  }
+  
+  .copyNot {
+    margin-left: -250px;
+    font-size: 1.2rem;
+  }
+}
+
+/* 4K телевизоры (3840x2160) */
+@media (min-width: 2561px) and (max-width: 3840px) {
+  footer {
+    padding: 5rem 22rem;
+    font-size: 1.8rem;
+    max-width: 3840px;
+    margin: 0 auto;
+  }
+  
+  footer h3 {
+    font-size: 3rem;
+  }
+  
+  .grafic {
+    font-size: 1.8rem;
+    margin-left: 12rem;
+    margin-top: 5rem;
+  }
+  
+  .graf {
+    font-size: 2.2rem;
+  }
+  
+  .social {
+    font-size: 2.2rem;
+    margin-left: 22rem;
+    margin-top: 5rem;
+  }
+  
+  .social div {
+    gap: 3.5rem;
+    margin-top: 3rem;
+  }
+  
+  footer img {
+    width: 2.5rem;
+  }
+  
+  .contact p {
+    margin-top: 2rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .contact span {
+    margin-top: 1.2rem;
+  }
+  
+  footer ul {
+    gap: 10rem;
+  }
+  
+  .copyNot {
+    margin-left: -350px;
+    font-size: 1.5rem;
+  }
+}
+
+/* 8K телевизоры (7680x4320) */
+@media (min-width: 3841px) {
+  footer {
+    padding: 6rem 30rem;
+    font-size: 2.2rem;
+    max-width: 7680px;
+    margin: 0 auto;
+  }
+  
+  footer h3 {
+    font-size: 3.5rem;
+  }
+  
+  .grafic {
+    font-size: 2.2rem;
+    margin-left: 15rem;
+    margin-top: 6rem;
+  }
+  
+  .graf {
+    font-size: 2.8rem;
+  }
+  
+  .social {
+    font-size: 2.8rem;
+    margin-left: 28rem;
+    margin-top: 6rem;
+  }
+  
+  .social div {
+    gap: 4rem;
+    margin-top: 3.5rem;
+  }
+  
+  footer img {
+    width: 3rem;
+  }
+  
+  .contact p {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .contact span {
+    margin-top: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  footer ul {
+    gap: 15rem;
+  }
+  
+  .copyNot {
+    margin-left: -500px;
+    font-size: 2rem;
+  }
+}
+
+/* Большие мониторы (1440px и выше) */
+@media (min-width: 1440px) and (max-width: 1440px) {
+  footer {
+    padding: 3rem 10rem;
+  }
+  
+  .grafic {
+    margin-left: 5rem;
+  }
+  
+  .social {
+    margin-left: 12rem;
+  }
+}
+
+/* ===== СУЩЕСТВУЮЩИЕ СТИЛИ БЕЗ ИЗМЕНЕНИЙ ===== */
 
 @media (max-width: 1024px) {
   .location-title {
@@ -117,42 +329,41 @@ footer h3 {
 
   .grafic {
     font-size: 1.1rem;
-    margin-top: 2.5rem;
+    margin-top: 5rem;
+    margin-left: -4rem;
   }
 
+  
   .graf {
     font-size: 1.3rem;
   }
 
   .social {
     font-size: 1.3rem;
+    margin-top: 5rem;
+  margin-left: 7rem;
+
+    
+  }
+  .social div{
+    gap: 2rem;
+
+
   }
 }
 
 @media (max-width: 768px) {
-  .location-title {
-    font-size: 1.5rem;
-    margin-top: 80px;
-    padding: 0 20px;
-  }
-  
-  .map-container {
-    margin-top: 60px;
-    margin-bottom: 80px;
-    padding: 0 15px;
-  }
-  
-  .map-iframe {
-    height: 450px;
-  }
+ 
 
   footer {
     padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+align-items: center;
   }
 
   footer ul {
     gap: 4rem;
-    flex-wrap: wrap;
   }
 
   footer li {
@@ -160,145 +371,240 @@ footer h3 {
   }
 
   footer h3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .grafic {
     font-size: 1rem;
-    margin-top: 2rem;
-    white-space: normal;
+    padding: 0;
+    margin: 0;
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
   }
+.timeFooter{
+    margin-left: 0rem !important;
 
+}
   .graf {
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
-
+  .footerSocial{
+    display: flex;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+.copyNot{
+  color: black;
+  display: flex;
+  font-size: 0.9rem;
+  margin-left: -460px;
+}
   .social {
-    font-size: 1.2rem;
-    white-space: normal;
+    font-size: 1.3rem;
+    margin-top: 19px;
+    margin-left: 0;
+  
   }
-
+.social p{
+  display: none;
+}
   .social div {
-    gap: 1.5rem;
+    gap: 3rem;
     margin-top: 1.5rem;
   }
+  .social img{
+    width: 2.5rem;
+  }
+
 }
 
 @media (max-width: 480px) {
-  .location-title {
-    font-size: 1.3rem;
-    margin-top: 60px;
-    padding: 0 15px;
-  }
   
-  .map-container {
-    margin-top: 40px;
-    margin-bottom: 60px;
-    padding: 0 10px;
-  }
-  
-  .map-iframe {
-    height: 350px;
-  }
-
   footer {
-    padding: 1.5rem 1.5rem;
-    font-size: 1rem;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+align-items: center;
   }
 
   footer ul {
-    gap: 2rem;
-    flex-direction: column;
+    gap: 0rem;
   }
 
   footer li {
-    min-width: auto;
-    width: 100%;
+    min-width: 200px;
   }
 
   footer h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
-
-  .contact p {
-    margin-top: 1rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .contact span {
-    margin-top: 0.5rem;
-  }
+.contact p{
+  font-size: 0.8rem;
+}
 
   .grafic {
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
+  }
+.timeFooter{
+    margin-left: 1.2rem;
+
+}
+  .graf {
+    font-size: 1rem;
+  }
+  .footerSocial{
+    display: flex;
     font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+.copyNot{
+  color: black;
+  display: flex;
+  font-size: 0.9rem;
+  margin-left: -460px;
+}
+  .social {
+    font-size: 1.3rem;
+    margin-top: 19px;
+  
+  }
+.social p{
+  display: none;
+}
+  .social div {
+    gap: 3rem;
     margin-top: 1.5rem;
   }
-
-  .graf {
-    font-size: 1.1rem;
+  .social img{
+    width: 2.5rem;
   }
-
-  .social {
-    font-size: 1.1rem;
-    margin-top: 1rem;
+  .footerSocial{
+    margin-top: 40px;
   }
-
-  .social div {
-    gap: 1.2rem;
-    margin-top: 1rem;
+  .copyNot{
+    margin-left: -200px;
+    margin-top: 30px;
   }
-
-  footer img {
-    width: 1.5rem;
+}
+@media (max-width: 420px) {
+  ul{
   }
-
-  .social div img {
-    width: 1.5rem;
-    height: 1.5rem;
+  .grafic{
+    min-width: 30px;
+  }
+  .contact{
+    min-width: 100px;
   }
 }
 
-@media (max-width: 360px) {
-  .location-title {
-    font-size: 1.2rem;
-    margin-top: 50px;
-  }
-  
-  .map-container {
-    margin-top: 30px;
-    margin-bottom: 50px;
-  }
-  
-  .map-iframe {
-    height: 300px;
-  }
-
-  footer {
-    padding: 1rem 1rem;
-    font-size: 0.9rem;
+@media (max-width: 380px) {
+footer {
+    padding: 2rem 0.2rem;
+    display: flex;
+    flex-direction: column;
+align-items: center;
   }
 
   footer ul {
-    gap: 1.5rem;
+    gap: 1rem;
+  }
+
+  footer li {
+    min-width: 0px;
   }
 
   footer h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
+.contact p{
+  font-size: 0.7rem;
+}
+.contact span{
+  font-size: 1rem;
+}
 
   .grafic {
-    font-size: 0.8rem;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
   }
+.timeFooter{
+    margin-left: 0rem;
+    margin-top: 0.5rem !important;
+    font-size: 0.7rem;
 
+}
   .graf {
     font-size: 1rem;
   }
-
-  .social {
-    font-size: 1rem;
+  .footerSocial{
+    display: flex;
+    font-size: 0.9rem;
+    margin-top: 1rem;
   }
-
+.copyNot{
+  color: black;
+  display: flex;
+  font-size: 0.9rem;
+  margin-left: -460px;
+}
+  .social {
+    font-size: 0.9rem;
+    margin-top: 19px;
+  
+  }
+.social p{
+  display: none;
+}
   .social div {
-    gap: 1rem;
+    gap: 3rem;
+    margin-top: 1.5rem;
+  }
+  .social img{
+    width: 2.5rem;
+  }
+  .footerSocial{
+    margin-top: 40px;
+  }
+  .copyNot{
+    margin-left: -200px;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 380px) {
+
+  .copyNot{
+    margin-left: -100px;
+  }
+}
+
+/* Дополнительные улучшения для телевизоров */
+@media (min-width: 1441px) {
+  /* Плавные переходы для лучшего UX на больших экранах */
+  footer {
+    transition: all 0.3s ease;
+  }
+  
+  footer img {
+    transition: transform 0.3s ease;
+  }
+  
+  footer img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Улучшенная читаемость на расстоянии */
+  .grafic,
+  .social {
+    line-height: 1.6;
   }
 }

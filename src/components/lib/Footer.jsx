@@ -11,17 +11,20 @@ export default function Footer() {
       <ul>
         <li className='contact'>
           <h3>AUTOGARANT_NORD</h3>
-          <p style={{display:"flex",alignItems:"center"}}><img src="/footer/location.svg" alt="" style={{marginBottom:"0.5rem"}}/>{t("locatin")}</p>
+          <p className='footerTextex' style={{display:"flex",alignItems:"center"}}><img src="/footer/location.svg" alt="" style={{marginBottom:"0.5rem"}}/>{t("locatin")}</p>
           <span>📞 079 705 579</span>
           <span>📞 069 234 242</span>
+
         </li>
 
         <li className='grafic'>
           <p className='graf'>{t("grafic")}</p>
-          <p style={{ marginTop: '2rem' }}>{t("all_time")} 9:00 - 17:00</p>
+          <p className='timeFooter' style={{ marginTop: '2rem' }}>{t("all_time")} 9:00 - 17:00</p>
         </li>
 
-        <li className='social'>
+      
+      </ul>
+        <div className='social'>
           <p>{t("social")}</p>
           <div>
             <a href="https://www.facebook.com/people/AutoGarant-Nord/61581020022134/" target="_blank" rel="noopener noreferrer">
@@ -34,8 +37,8 @@ export default function Footer() {
               <img src="/icons/instagram.svg" alt="Instagram" />
             </a>
           </div>
-        </li>
-      </ul>
+        </div>
+          <p className='footerSocial'>@autogarant_nord</p>
     </footer>
   )
 }

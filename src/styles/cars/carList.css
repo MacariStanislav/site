@@ -22,7 +22,7 @@
   justify-content: center;
 }
 
-.car_list {
+.car_list1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 27px;
@@ -68,7 +68,7 @@
 @media (max-width: 1024px) {
   .car_list_wrapper { margin-top: 80px; padding: 0 20px; }
   .car_list_wrapper h3 { font-size: 1.75rem; margin-bottom: 40px; }
-  .car_list { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .car_list1 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .nav_btn { width: 45px; height: 45px; }
   .nav_btn.left { left: -15px; }
   .nav_btn.right { right: -15px; }
@@ -77,7 +77,7 @@
 @media (max-width: 768px) {
   .car_list_wrapper { margin-top: 60px; padding: 0 15px; }
   .car_list_wrapper h3 { font-size: 1.5rem; margin-bottom: 30px; }
-  .car_list { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .car_list1 { grid-template-columns: repeat(2, 1fr); gap: 15px; }
   .nav_btn { width: 40px; height: 40px; }
   .nav_btn.left { left: -10px; }
   .nav_btn.right { right: -10px; }
@@ -87,7 +87,7 @@
 @media (max-width: 480px) {
   .car_list_wrapper { margin-top: 40px; padding: 0 10px; }
   .car_list_wrapper h3 { font-size: 1.3rem; margin-bottom: 25px; }
-  .car_list {
+  .car_list1 {
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
     max-width: 300px;
@@ -105,6 +105,6 @@
 }
 
 @media (max-width: 360px) {
-  .car_list { max-width: 270px; }
+  .car_list1 { max-width: 270px; }
   .car_list_wrapper h3 { font-size: 1.2rem; }
 }

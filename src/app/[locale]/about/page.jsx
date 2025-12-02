@@ -142,7 +142,7 @@ export default function About() {
         <div className="text-block">{t('text_block_2')}</div>
         <div className="text-block">{t('text_block_3')}</div>
         <img src="/lines/line3.svg" className="grid-line line-3" alt="" />
-        <div></div>
+        <div className='divBlock'></div>
         <div className="text-block">{t('text_block_4')}</div>
         <div className="text-block">{t('text_block_5')}</div>
         <img src="/lines/line4.svg" className="grid-line line-4" alt="" />

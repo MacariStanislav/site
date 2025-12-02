@@ -1,20 +1,26 @@
 .carCard {
-  padding: 0;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  border: none;
+  height: 100%;
+  position: relative;
 }
 
 .carCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+
 }
 
 .carCard_imgBox {
   width: 100%;
   height: 13.7rem;
+  border-radius: 5px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 12px #D9D9D9;
@@ -24,62 +30,309 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s ease;
 }
 
 .carCard:hover .carCard_imgBox img {
-  transform: scale(1.05);
+  transform: scale(1.1);
+}
+
+.carCard_content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .carCard_title {
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 600;
   margin: 0;
   padding: 0;
-  margin-top: 1.3rem;
+  margin-top: 0;
   line-height: 1.3;
+  color: #111;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 3.2rem;
 }
 
 .carCard_price {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #111;
+  color: #ff4a4a;
   margin: 0;
   padding: 0;
-  margin-top: 1.3rem;
+  margin-top: 1rem;
+  letter-spacing: 0.5px;
 }
 
 .carCard_info {
   font-size: 0.95rem;
   color: #333333;
   display: grid;
-  grid-template-columns: 1fr 0fr;
+  grid-template-columns: 1fr 1fr;
   row-gap: 0.6rem;
+  column-gap: 1rem;
   font-weight: 500;
-  white-space: nowrap;
+  margin-top: 1rem;
+}
+
+.info_item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.info_icon {
+  width: 16px;
+  height: 16px;
+  color: #666;
 }
 
 .right {
   text-align: right;
+  justify-content: flex-end;
 }
 
 .carCard_btn {
   width: 100%;
   padding: 1rem 0;
-  background: #FF4A4A;
+  background: linear-gradient(135deg, #FF4A4A, #E63939);
   color: #fff;
   font-size: 1.1rem;
   border: none;
-  border-radius: 0;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.2s;
-  margin-top: 1rem;
+  transition: all 0.3s ease;
+  margin-top: auto;
   font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .carCard_btn:hover {
-  background: #ce2d2d;
+  background: linear-gradient(135deg, #E63939, #CE2D2D);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 74, 74, 0.3);
 }
+
+.carCard_badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #FF4A4A, #E63939);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(255, 74, 74, 0.3);
+}
+
+/* ===== АДАПТАЦИЯ ДЛЯ ТЕЛЕВИЗОРОВ ===== */
+
+/* 8K телевизоры (7680x4320) */
+@media (min-width: 3841px) {
+  .carCard {
+    border-radius: 24px;
+    border-width: 2px;
+  }
+  
+  .carCard_imgBox {
+    height: 20rem;
+  }
+  
+  .carCard_content {
+    padding: 2rem;
+  }
+  
+  .carCard_title {
+    font-size: 2rem;
+    min-height: 4.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .carCard_price {
+    font-size: 2.2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .carCard_info {
+    font-size: 1.3rem;
+    row-gap: 0.8rem;
+    column-gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .info_icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .carCard_btn {
+    padding: 1.5rem 0;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+  }
+  
+  .carCard_badge {
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+  
+  .carCard:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* 4K телевизоры (3840x2160) */
+@media (min-width: 2561px) and (max-width: 3840px) {
+  .carCard {
+    border-radius: 20px;
+  }
+  
+  .carCard_imgBox {
+    height: 18rem;
+  }
+  
+  .carCard_content {
+    padding: 1.8rem;
+  }
+  
+  .carCard_title {
+    font-size: 1.8rem;
+    min-height: 4rem;
+  }
+  
+  .carCard_price {
+    font-size: 1.9rem;
+  }
+  
+  .carCard_info {
+    font-size: 1.1rem;
+    row-gap: 0.7rem;
+    column-gap: 1.2rem;
+  }
+  
+  .info_icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .carCard_btn {
+    padding: 1.2rem 0;
+    font-size: 1.3rem;
+    border-radius: 10px;
+  }
+  
+  .carCard_badge {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .carCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+  }
+}
+
+/* 2K телевизоры (2560x1440) */
+@media (min-width: 1921px) and (max-width: 2560px) {
+  .carCard {
+    border-radius: 16px;
+  }
+  
+  .carCard_imgBox {
+    height: 16rem;
+  }
+  
+  .carCard_content {
+    padding: 1.6rem;
+  }
+  
+  .carCard_title {
+    font-size: 1.6rem;
+    min-height: 3.8rem;
+  }
+  
+  .carCard_price {
+    font-size: 1.7rem;
+  }
+  
+  .carCard_info {
+    font-size: 1rem;
+  }
+  
+  .carCard_btn {
+    padding: 1.1rem 0;
+    font-size: 1.2rem;
+  }
+  
+  .carCard:hover {
+    transform: translateY(-9px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Full HD телевизоры (1920x1080) */
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .carCard {
+    border-radius: 14px;
+  }
+  
+  .carCard_imgBox {
+    height: 15rem;
+  }
+  
+  .carCard_title {
+    font-size: 1.4rem;
+    min-height: 3.4rem;
+  }
+  
+  .carCard_price {
+    font-size: 1.5rem;
+  }
+  
+  .carCard_info {
+    font-size: 0.9rem;
+  }
+  
+  .carCard_btn {
+    padding: 1rem 0;
+    font-size: 1.1rem;
+  }
+}
+
+/* HD телевизоры и большие планшеты */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .carCard {
+    border-radius: 12px;
+  }
+  
+  .carCard_imgBox {
+    height: 14rem;
+  }
+  
+  .carCard_title {
+    font-size: 1.3rem;
+  }
+  
+  .carCard_price {
+    font-size: 1.4rem;
+  }
+}
+
+/* ===== СУЩЕСТВУЮЩИЕ МЕДИА-ЗАПРОСЫ ===== */
 
 @media (max-width: 1024px) {
   .carCard {
@@ -151,17 +404,24 @@
     max-width: 18rem;
     margin: 0 auto;
     padding: 0 10px;
+    border-radius: 10px;
   }
   
   .carCard_imgBox {
     height: 10rem;
     box-shadow: 0 4px 8px #D9D9D9;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .carCard_content {
+    padding: 1.2rem;
   }
   
   .carCard_title {
     font-size: 1.1rem;
-    margin-top: 0.9rem;
+    margin-top: 0;
     text-align: center;
+    min-height: 2.8rem;
   }
   
   .carCard_price {
@@ -176,6 +436,7 @@
     gap: 0.5rem;
     text-align: center;
     white-space: normal;
+    margin-top: 0.8rem;
   }
   
   .right {
@@ -185,26 +446,30 @@
   .carCard_btn {
     padding: 0.9rem 0;
     font-size: 1rem;
-    margin-top: 0.9rem;
+    margin-top: 1.2rem;
     border-radius: 6px;
   }
   
   .carCard:hover {
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
 }
 
-
+@media (max-width: 420px) {
+  .carCard {
+    width: 190px;
+  
+  }
+  
+}
 /* Очень маленькие мобильные */
 @media (max-width: 380px) {
   .carCard {
-  width: 300px;
-
+    width: 300px;
     max-width: 16rem;
     padding: 0 5px;
-    margin-left:30px;
-    
+    margin-left: 30px;
   }
   
   .carCard_imgBox {
@@ -214,6 +479,7 @@
   .carCard_title {
     font-size: 1rem;
     margin-top: 0.8rem;
+    min-height: 2.4rem;
   }
   
   .carCard_price {
@@ -244,6 +510,7 @@
   
   .carCard_title {
     font-size: 1rem;
+    min-height: 2.4rem;
   }
   
   .carCard_info {
@@ -255,10 +522,75 @@
   .carCard_imgBox {
     height: 15rem;
   }
-}@media (max-width: 350px) {
-  .carCard {
+}
 
-    margin-left:0;
-    
+@media (max-width: 350px) {
+  .carCard {
+    margin-left: 0;
+    width: 280px;
+  }
+}
+
+/* Дополнительные улучшения для телевизоров */
+@media (min-width: 1441px) {
+  /* Увеличенные области клика для пульта ДУ */
+  .carCard_btn {
+    position: relative;
+  }
+  
+  .carCard_btn::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    z-index: -1;
+  }
+  
+  /* Улучшенные hover-эффекты */
+ 
+  
+  /* Плавные переходы */
+  .carCard * {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Улучшенная читаемость */
+  .carCard_title,
+  .carCard_price {
+    letter-spacing: 0.3px;
+  }
+}
+
+/* Поддержка высокой плотности пикселей (4K) */
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1441px),
+       (min-resolution: 192dpi) and (min-width: 1441px) {
+  .carCard_imgBox img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Уменьшенная анимация для пользователей */
+@media (prefers-reduced-motion: reduce) {
+  .carCard,
+  .carCard * {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .carCard:hover,
+  .carCard:hover .carCard_imgBox img,
+  .carCard_btn:hover {
+    transform: none !important;
+  }
+}
+
+/* Улучшенная доступность для телевизоров */
+@media (min-width: 1441px) {
+  .carCard_btn:focus {
+    outline: 3px solid rgba(255, 74, 74, 0.5);
+    outline-offset: 5px;
   }
 }

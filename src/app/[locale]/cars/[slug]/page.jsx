@@ -342,41 +342,7 @@ export default function CarDetailPage() {
       </div>
 
      
-      {similarLoading ? (
-        <div className={styles.loading}>{t('loading_similar')}</div>
-      ) : similarCars.length > 0 ? (
-        <div className={styles.similarCarsSection}>
-          <h3 className={styles.similarTitle}>{t('similar_cars')}</h3>
-          <div className={styles.similarCarsGrid}>
-            {similarCars.map((similarCar) => (
-              <Link key={similarCar.id} href={`/cars/${similarCar.slug}`}>
-                <div className={styles.similarCarCard}>
-                  {similarCar.mediaUrlPhoto && similarCar.mediaUrlPhoto.length > 0 && (
-                    <img
-                      src={similarCar.mediaUrlPhoto[0]}
-                      alt={`${similarCar.brand} ${similarCar.model}`}
-                      className={styles.similarCarImage}
-                    />
-                  )}
-                  <div className={styles.similarCarTitle}>
-                    {similarCar.brand} {similarCar.model}
-                  </div>
-                  <div className={styles.similarCarPrice}>
-                    {similarCar.price} €
-                  </div>
-                  <div className={styles.similarCarSpecs}>
-                    {similarCar.yearOfManufacture} • {similarCar.mileage} {t('km')} • {similarCar.fuelType}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div style={{ textAlign: 'center', color: '#ccc', marginTop: '40px' }}>
-          {t('no_similar_cars')}
-        </div>
-      )}
+    
 
       <CarsList />
 

@@ -54,7 +54,7 @@ export default function CarsList() {
           <ChevronLeft size={40} />
         </button>
 
-        <div className="car_list">
+        <div className="car_list1">
           {displayCars.map(car => (
             <CarCard key={car.slug} car={car} />
           ))}

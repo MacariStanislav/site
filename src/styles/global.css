@@ -21,6 +21,51 @@ main {
 }
 
 
+/* Основные стили которые загружаются после критических */
+
+/* Очищаем от критических стилей которые уже в инлайне */
+body {
+  /* Эти свойства уже в criticalCSS */
+}
+
+/* Дополнительные стили */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Медленно загружаемые стили которые не критичны */
+.car-animation,
+.fancy-effects,
+.complex-backgrounds {
+  /* Эти стили загрузятся позже */
+}
+
+/* Стили для телевизоров */
+@media (min-width: 3841px) {
+  .container {
+    max-width: 2560px;
+  }
+}
+
+@media (min-width: 2561px) and (max-width: 3840px) {
+  .container {
+    max-width: 1920px;
+  }
+}
+
+@media (min-width: 1921px) and (max-width: 2560px) {
+  .container {
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .container {
+    max-width: 1400px;
+  }
+}
 *:focus {
   outline: none;
 }

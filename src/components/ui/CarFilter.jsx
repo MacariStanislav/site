@@ -110,9 +110,9 @@ export default function CarFilter() {
 
     // Функция для корректировки видимого количества, чтобы всегда было нечётным
     const getAdjustedVisibleCount = () => {
-        if (window.innerWidth <= 480) return 5; // 5 - нечётное
-        else if (window.innerWidth <= 768) return 9; // 9 - нечётное вместо 10
-        else return 15; // 15 - нечётное
+        if (window.innerWidth <= 480) return 4; // 5 - нечётное
+        else if (window.innerWidth <= 768) return 6; // 9 - нечётное вместо 10
+        else return 16; // 15 - нечётное
     };
 
     useEffect(() => {
@@ -462,7 +462,7 @@ export default function CarFilter() {
             </div>
 
             <div className="main_content">
-                <div className="filters_sidebar desktop-only">
+                <div className="filters_sidebar desktop-only1">
                     {FiltersSidebar}
                 </div>
 

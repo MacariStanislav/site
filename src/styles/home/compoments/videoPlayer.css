@@ -1,22 +1,53 @@
 .video_page_container {
     min-height: 30vh;
-    background: #000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    margin-top: 100px;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 900px;
+    margin: 100px auto 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.video_page_container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveGrid 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes moveGrid {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
 }
 
 .video_container {
     position: relative;
     width: 400px;
     height: 600px;
-    background: #000;
-    border-radius: 12px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.video_container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
 }
 
 .video_element {
@@ -24,6 +55,43 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 20px;
+}
+
+.video_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.4) 0%,
+        rgba(0,0,0,0) 20%,
+        rgba(0,0,0,0) 80%,
+        rgba(0,0,0,0.6) 100%);
+    border-radius: 20px;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.video_container.show-controls .video_overlay {
+    pointer-events: auto;
+}
+
+.video_controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    border-radius: 0 0 20px 20px;
+}
+
+.video_container.show-controls .video_controls {
+    transform: translateY(0);
 }
 
 .play_button {
@@ -31,17 +99,25 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.3);
     cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.play_button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .video_container.playing .play_button {
@@ -50,18 +126,162 @@
     pointer-events: none;
 }
 
-.play_button:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
 .play_icon {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 12px 0 12px 20px;
+    border-width: 15px 0 15px 25px;
     border-color: transparent transparent transparent #ffffff;
-    margin-left: 4px;
+    margin-left: 8px;
+}
+
+/* Прогресс бар */
+.progress_container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress_bar {
+    height: 100%;
+    background: linear-gradient(90deg, #f09433, #dc2743, #bc1888);
+    border-radius: 3px;
+    position: relative;
+    transition: width 0.1s linear;
+}
+
+.progress_thumb {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.progress_container:hover .progress_thumb {
+    opacity: 1;
+}
+
+/* Панель управления */
+.controls_bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls_left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.control_btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    font-size: 18px;
+    backdrop-filter: blur(10px);
+}
+
+.control_btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
+}
+
+.volume_control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume_slider {
+    width: 80px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    outline: none;
+    opacity: 0;
+    transition: opacity 0.3s, width 0.3s;
+}
+
+.volume_control:hover .volume_slider {
+    opacity: 1;
+    width: 100px;
+}
+
+.volume_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume_slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.time_display {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Вотермарк Instagram */
+.instagram_watermark {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.insta_logo {
+    font-size: 16px;
+    filter: drop-shadow(0 0 10px rgba(225, 48, 108, 0.5));
+}
+
+.insta_text {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .loading_spinner {
@@ -69,30 +289,221 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-top: 3px solid #ffffff;
+    z-index: 2;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid #bc1888;
+    border-right: 4px solid #f09433;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 768px) {
+/* ===== АДАПТАЦИЯ ДЛЯ ТЕЛЕВИЗОРОВ ===== */
+
+/* 8K телевизоры */
+@media (min-width: 3841px) {
+    .video_page_container {
+        max-width: 1400px;
+        margin: 150px auto 80px;
+        padding: 60px 40px;
+        border-radius: 40px;
+    }
+    
     .video_container {
-        width: 350px;
+        width: 600px;
+        height: 900px;
+        border-radius: 36px;
+    }
+    
+    .play_button {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .play_icon {
+        border-width: 25px 0 25px 40px;
+    }
+    
+    .video_controls {
+        padding: 30px;
+    }
+    
+    .control_btn {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .time_display {
+        font-size: 18px;
+    }
+    
+    .instagram_watermark {
+        top: 30px;
+        left: 30px;
+        padding: 12px 25px;
+        font-size: 18px;
+    }
+    
+    .insta_logo {
+        font-size: 22px;
+    }
+}
+
+/* 4K телевизоры */
+@media (min-width: 2561px) and (max-width: 3840px) {
+    .video_page_container {
+        max-width: 1200px;
+        margin: 120px auto 60px;
+        padding: 50px 30px;
+        border-radius: 35px;
+    }
+    
+    .video_container {
+        width: 500px;
+        height: 750px;
+        border-radius: 32px;
+    }
+    
+    .play_button {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .play_icon {
+        border-width: 20px 0 20px 35px;
+    }
+    
+    .video_controls {
+        padding: 25px;
+    }
+    
+    .control_btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+    
+    .time_display {
+        font-size: 16px;
+    }
+    
+    .instagram_watermark {
+        top: 25px;
+        left: 25px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    
+    .insta_logo {
+        font-size: 20px;
+    }
+}
+
+/* 2K телевизоры */
+@media (min-width: 1921px) and (max-width: 2560px) {
+    .video_page_container {
+        max-width: 1000px;
+        margin: 100px auto 50px;
+    }
+    
+    .video_container {
+        width: 450px;
+        height: 675px;
+    }
+    
+    .play_button {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .play_icon {
+        border-width: 18px 0 18px 30px;
+    }
+}
+
+/* Full HD телевизоры */
+@media (min-width: 1441px) and (max-width: 1920px) {
+    .video_page_container {
+        max-width: 900px;
+    }
+    
+    .video_container {
+        width: 400px;
         height: 600px;
     }
 }
 
-@media (max-width: 480px) {
+/* ===== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ===== */
+
+@media (max-width: 768px) {
+    .video_page_container {
+        margin-top: 50px;
+        margin-bottom: 30px;
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+    }
+    
     .video_container {
-        width: 300px;
-        height: 500px;
+        width: 320px;
+        height: 480px;
+    }
+    
+    .play_button {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .play_icon {
+        border-width: 12px 0 12px 20px;
+    }
+    
+    .video_controls {
+        padding: 15px;
+    }
+    
+    .controls_left {
+        gap: 10px;
+    }
+    
+    .control_btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+    
+    .time_display {
+        font-size: 12px;
+    }
+    
+    .instagram_watermark {
+        top: 15px;
+        left: 15px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video_page_container {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    .video_container {
+        width: 280px;
+        height: 420px;
+        border-radius: 18px;
     }
     
     .play_button {
@@ -102,5 +513,65 @@
     
     .play_icon {
         border-width: 10px 0 10px 16px;
+    }
+    
+    .video_controls {
+        padding: 12px;
+    }
+    
+    .control_btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .instagram_watermark {
+        top: 12px;
+        left: 12px;
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+}
+
+/* Сенсорные устройства */
+@media (hover: none) and (pointer: coarse) {
+    .video_overlay {
+        pointer-events: auto;
+    }
+    
+    .video_controls {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .video_container.playing .video_controls {
+        opacity: 0;
+    }
+    
+    .video_container.playing:hover .video_controls {
+        opacity: 1;
+    }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+    .video_page_container {
+        background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    }
+}
+
+/* Уменьшенная анимация */
+@media (prefers-reduced-motion: reduce) {
+    .video_container,
+    .play_button,
+    .control_btn,
+    .video_controls {
+        transition: none;
+    }
+    
+    .spinner {
+        animation: none;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #bc1888;
     }
 }
